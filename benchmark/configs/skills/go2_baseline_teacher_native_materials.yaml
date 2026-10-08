@@ -1,0 +1,53 @@
+schema_version: "1.0"
+skill_id: go2-extreme-parkour-baseline-teacher-native-materials
+sensor_track: privileged
+robot_profile_sha256: ""
+control_frequency_hz: 50
+navigation:
+  mode: waypoint_heading
+  route_scope: fixed_route
+  assistance: benchmark_waypoints
+  lookahead: 2
+  representation: current_and_next_heading_error
+controller:
+  type: native_rsl_rl
+  checkpoint: ${FORESIGHT_ROOT}/logs/rsl_rl/unitree_go2_parkour/2026-08-08_14-55-43_baseline_teacher_seed1_scaled/model_6300.pt
+  source_root: ${FORESIGHT_ROOT}
+  task: Isaac-Extreme-Parkour-Teacher-Unitree-Go2-Play-v0
+  gpu_index: 1
+  evaluation_steps: 1000
+  wall_timeout_s: 1800
+  record_video_each_trial: false
+sensors:
+  - name: route_waypoints
+    kind: waypoints
+    shape: [2, 3]
+    rate_hz: 50
+    parameters:
+      representation: current_and_next_heading_error
+      supplied_by: canonical_world_route_bridge
+  - name: forward_velocity_command
+    kind: command
+    shape: [3]
+    rate_hz: 50
+  - name: native_actor_observation
+    kind: privileged_state
+    shape: [753]
+    rate_hz: 50
+    parameters:
+      supplied_by: source_isaaclab_task
+      includes: [proprioception, height_scan, estimator_state, history]
+observations:
+  - name: actor_observation
+    sources: [route_waypoints, forward_velocity_command, native_actor_observation]
+    shape: [753]
+    dtype: float32
+action:
+  mode: position
+  size: 12
+  joint_order: [FL_hip_joint, FL_thigh_joint, FL_calf_joint, FR_hip_joint, FR_thigh_joint, FR_calf_joint, RL_hip_joint, RL_thigh_joint, RL_calf_joint, RR_hip_joint, RR_thigh_joint, RR_calf_joint]
+provenance:
+  repository: ${FORESIGHT_ROOT}
+  experiment: baseline_teacher_seed1_scaled
+  comparison_group: go2-native-teachers-material-verified
+  material_binding_probe: runs/paper_pilot/material_conformance/baseline-rs1-bound-seed1702/result.json

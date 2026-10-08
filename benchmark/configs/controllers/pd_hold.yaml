@@ -1,0 +1,5 @@
+type: pd_hold
+stiffness: 25.0
+damping: 0.5
+command: [0.0, 0.0, 0.0]
+command_velocity_mps: 0.6

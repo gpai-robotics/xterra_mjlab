@@ -1,0 +1,27 @@
+title: Universal Camber and Curvature — RS1–RS11
+dt_s: 0.002
+width_px: 640
+height_px: 480
+gl_backend: osmesa
+azimuth_deg: 135
+elevation_deg: -42
+distance_scale: 0.78
+
+modifier_matrix:
+  terrains: [rs1, rs2, rs3, rs4, rs5, rs6, rs7, rs8, rs9, rs10, rs11]
+  defaults:
+    difficulty: 0.6
+    curve_segments: 28
+  variants:
+    - suffix: left-curve-left-low
+      title: "{terrain} — anticlockwise curve, left side low"
+      seed: 3101
+      curve_angle_deg: 65
+      camber_deg: -12
+      azimuth_deg: 140
+    - suffix: right-curve-right-low
+      title: "{terrain} — clockwise curve, right side low"
+      seed: 3102
+      curve_angle_deg: -65
+      camber_deg: 12
+      azimuth_deg: 220

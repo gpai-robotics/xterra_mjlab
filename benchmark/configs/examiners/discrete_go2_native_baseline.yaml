@@ -1,0 +1,24 @@
+schema_version: "2.0"
+examiner_id: go2-discrete-pruned-baseline
+scheduler: discrete_pruned_v2
+backend: foresight_native
+robot_profile: ../../assets/cache/go2_mjcf_profile.json
+robot_asset: ../../assets/cache/mujoco_menagerie/unitree_go2/go2.xml
+robot_format: mjcf
+skill: ../skills/go2_baseline_teacher_native.yaml
+runtimes: ../runtimes.yaml
+output_dir: ../../runs/discrete_examiner/go2_baseline_teacher_native
+terrain_codes: [rs1, rs2, rs3, rs4, rs5, rs6, rs7, rs8, rs9, rs10, rs11]
+seed: 1701
+timeout_s: 20
+discrete:
+  screening_repetitions: 3
+  confirmation_repetitions: 10
+  confirmation_successes: 7
+  infrastructure_retries: 2
+  fixed_pair_static_friction: 0.50
+  fixed_pair_dynamic_friction: 0.40
+  capture_native_telemetry: true
+  native_telemetry_stride: 10
+  # Set true only for a visual-evidence run; it safely forces serial execution.
+  record_video_all_trials: false

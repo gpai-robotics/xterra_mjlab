@@ -1,0 +1,8 @@
+schema_version: "1.0"
+suite_id: quick
+description: NIST-compatible ten-repeat diagnostic profile.
+repetitions: 10
+terrain_codes: [rs1, rs2, rs3, rs4, rs5, rs6, rs7, rs8, rs9, rs10, rs11]
+difficulties: [0.25, 0.5, 0.75]
+seed_base: 1000
+

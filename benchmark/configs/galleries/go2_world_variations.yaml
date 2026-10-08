@@ -1,0 +1,258 @@
+title: Go2 Robustness World Variation Catalogue
+dt_s: 0.002
+width_px: 640
+height_px: 360
+gl_backend: osmesa
+azimuth_deg: 138
+elevation_deg: -30
+distance_scale: 0.78
+
+variations:
+  - name: rs1-low-friction
+    title: RS1 — Low-friction transition
+    terrain: rs1
+    difficulty: 0.30
+    seed: 101
+    set: {length_m: 1.8}
+
+  - name: rs2-rough-flat
+    title: RS2 — Strong roughness on low friction
+    terrain: rs2
+    difficulty: 0.80
+    seed: 202
+    set: {length_m: 2.4, roughness_amplitude_m: 0.06}
+
+  - name: rs3-gentle-slope
+    title: RS3 — Gentle 10° low-friction slope
+    terrain: rs3
+    difficulty: 0.30
+    seed: 303
+    set: {run_m: 2.0, slope_rad: 0.174533}
+
+  - name: rs3-steep-slope
+    title: RS3 — Steep 30° low-friction slope
+    terrain: rs3
+    difficulty: 0.90
+    seed: 304
+    set: {run_m: 1.8, slope_rad: 0.523599}
+
+  - name: rs4-rough-slope
+    title: RS4 — Large rough 20° slope
+    terrain: rs4
+    difficulty: 0.85
+    seed: 404
+    set: {run_m: 2.3, slope_rad: 0.349066, roughness_amplitude_m: 0.06}
+
+  - name: rs5-stairs
+    title: RS5 — Five low-friction stairs
+    terrain: rs5
+    difficulty: 0.65
+    seed: 505
+    set: {step_count: 5, step_rise_m: 0.08, step_tread_m: 0.18}
+
+  - name: rs6-wave
+    title: RS6 — Repeated up/down waveform
+    terrain: rs6
+    difficulty: 0.75
+    seed: 606
+    set: {length_m: 3.0, amplitude_m: 0.24, segments: 24}
+
+  - name: rs7-curved-slope
+    title: RS7 — Broad curved slope
+    terrain: rs7
+    difficulty: 0.80
+    seed: 707
+    set: {length_m: 3.2, amplitude_m: 0.34, segments: 24}
+
+  - name: rs8-small-gaps
+    title: RS8 — Seven repeated foothold gaps
+    terrain: rs8
+    difficulty: 0.70
+    seed: 808
+    set: {gap_count: 7, gap_m: 0.09, platform_m: 0.13}
+
+  - name: rs9-large-gap
+    title: RS9 — Large gap crossing
+    terrain: rs9
+    difficulty: 0.70
+    seed: 909
+    set: {gap_m: 0.35, takeoff_m: 0.85}
+
+  - name: rs10-high-step
+    title: RS10 — High-rise step-up
+    terrain: rs10
+    difficulty: 0.75
+    seed: 1010
+    set: {rise_m: 0.28, platform_m: 1.2}
+
+  - name: rs11-mud
+    title: RS11 — Extended compliant mud/marsh
+    terrain: rs11
+    difficulty: 0.80
+    seed: 1111
+    set: {length_m: 3.0, patch_m: 0.22}
+
+  - name: ae-mud-slope-compact
+    title: AE — Compact mud then rough slope
+    terrain: ae
+    purple: rs11
+    brown: rs4
+    difficulty: 0.35
+    seed: 1201
+    set:
+      approach_m: 0.8
+      transition_length_m: 0.4
+      landing_m: 0.75
+      central_width_m: 0.7
+      purple_length_m: 1.2
+      purple_patch_m: 0.12
+      brown_run_m: 0.9
+      brown_slope_rad: 0.20944
+      brown_roughness_amplitude_m: 0.02
+
+  - name: ae-mud-slope-standard
+    title: AE — Standard mud then rough slope
+    terrain: ae
+    purple: rs11
+    brown: rs4
+    difficulty: 0.60
+    seed: 1202
+
+  - name: ae-mud-slope-large
+    title: AE — Large 25-body-length mud and slope course
+    terrain: ae
+    purple: rs11
+    brown: rs4
+    difficulty: 0.80
+    seed: 1203
+    set:
+      approach_m: 1.5048
+      transition_length_m: 0.7524
+      landing_m: 1.1286
+      central_width_m: 1.2
+      bypass_width_m: 0.6
+      lane_gap_m: 0.08
+      purple_length_m: 3.0096
+      purple_patch_m: 0.25
+      brown_run_m: 2.2572
+      brown_slope_rad: 0.349066
+      brown_roughness_amplitude_m: 0.06
+
+  - name: ae-slope-mud-swapped
+    title: AE — Rough slope then mud (order swapped)
+    terrain: ae
+    purple: rs4
+    brown: rs11
+    difficulty: 0.70
+    seed: 1301
+    set:
+      purple_run_m: 1.7
+      purple_slope_rad: 0.279253
+      purple_roughness_amplitude_m: 0.045
+      brown_length_m: 2.2
+      brown_patch_m: 0.18
+
+  - name: ae-mud-slope-reversed
+    title: AE — Mud and rough slope, reversed traversal
+    terrain: ae
+    purple: rs11
+    brown: rs4
+    reversed: true
+    difficulty: 0.70
+    seed: 1302
+    set:
+      purple_length_m: 2.2
+      brown_run_m: 1.7
+      brown_slope_rad: 0.279253
+      brown_roughness_amplitude_m: 0.045
+
+  - name: ae-rough-stairs
+    title: AE — Rough flat surface then stairs
+    terrain: ae
+    purple: rs2
+    brown: rs5
+    difficulty: 0.70
+    seed: 1401
+    set:
+      purple_length_m: 2.0
+      purple_roughness_amplitude_m: 0.05
+      brown_step_count: 5
+      brown_step_rise_m: 0.075
+      brown_step_tread_m: 0.18
+
+  - name: ae-wave-gap
+    title: AE — Waveform then large gap
+    terrain: ae
+    purple: rs6
+    brown: rs9
+    difficulty: 0.75
+    seed: 1402
+    set:
+      purple_length_m: 2.7
+      purple_amplitude_m: 0.22
+      purple_segments: 20
+      brown_gap_m: 0.32
+      brown_takeoff_m: 0.8
+
+  - name: ae-curve-step
+    title: AE — Curved slope then high step
+    terrain: ae
+    purple: rs7
+    brown: rs10
+    difficulty: 0.75
+    seed: 1403
+    set:
+      purple_length_m: 2.8
+      purple_amplitude_m: 0.3
+      purple_segments: 22
+      brown_rise_m: 0.25
+      brown_platform_m: 1.0
+
+  - name: ae-double-rough-slope
+    title: AE — Two independently seeded rough slopes
+    terrain: ae
+    purple: rs4
+    brown: rs4
+    difficulty: 0.75
+    seed: 1404
+    set:
+      purple_run_m: 1.5
+      purple_slope_rad: 0.244346
+      purple_roughness_amplitude_m: 0.035
+      brown_run_m: 1.9
+      brown_slope_rad: 0.383972
+      brown_roughness_amplitude_m: 0.055
+
+  - name: ae-double-mud
+    title: AE — Two mud fields with different patch scales
+    terrain: ae
+    purple: rs11
+    brown: rs11
+    difficulty: 0.80
+    seed: 1405
+    set:
+      purple_length_m: 1.8
+      purple_patch_m: 0.12
+      brown_length_m: 2.8
+      brown_patch_m: 0.3
+
+  - name: ae-friction-slope
+    title: AE — Low-friction flat then low-friction slope
+    terrain: ae
+    purple: rs1
+    brown: rs3
+    difficulty: 0.85
+    seed: 1406
+    set:
+      purple_length_m: 2.2
+      brown_run_m: 2.0
+      brown_slope_rad: 0.349066
+
+  - name: aee-long-mixed
+    title: AEE — Four-cell long-horizon mixed course
+    terrain: aee
+    layout: long
+    count: 4
+    difficulty: 0.65
+    seed: 1501
+    distance_scale: 0.62

@@ -1,0 +1,30 @@
+schema_version: "2.0"
+benchmark_id: go2-camber-curvature
+seed_base: 33000
+dt_s: 0.005
+control_decimation: 4
+timeout_s: 30.0
+
+profiles:
+  smoke:
+    levels: [L0, L1, L2, L3]
+    repetitions: 1
+    controller_seeds: [null]
+    geometry_modifiers:
+      - name: anticlockwise-left-low
+        levels: [L1]
+        terrain_codes: [all]
+        camber_deg: -12
+        curve_angle_deg: 65
+        curve_segments: 28
+      - name: clockwise-right-low
+        levels: [L1]
+        terrain_codes: [all]
+        camber_deg: 12
+        curve_angle_deg: -65
+        curve_segments: 28
+
+backend_gates:
+  conformance_required_for_cross_engine: true
+  calibration_required_for_cross_engine: true
+  walking_controller_required_for_capability_claims: true

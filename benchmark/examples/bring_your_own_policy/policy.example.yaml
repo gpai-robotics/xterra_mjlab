@@ -1,0 +1,90 @@
+schema_version: '2.0'
+policy_id: policy
+runtime:
+  format: torchscript
+  path: /tmp/byop_demo/policy.pt
+  control_frequency_hz: 50.0
+canonical_joint_order:
+- FL_hip_joint
+- FL_thigh_joint
+- FL_calf_joint
+- FR_hip_joint
+- FR_thigh_joint
+- FR_calf_joint
+- RL_hip_joint
+- RL_thigh_joint
+- RL_calf_joint
+- RR_hip_joint
+- RR_thigh_joint
+- RR_calf_joint
+joint_order_policy:
+- FL_hip_joint
+- FL_thigh_joint
+- FL_calf_joint
+- FR_hip_joint
+- FR_thigh_joint
+- FR_calf_joint
+- RL_hip_joint
+- RL_thigh_joint
+- RL_calf_joint
+- RR_hip_joint
+- RR_thigh_joint
+- RR_calf_joint
+references:
+  default_joint_position:
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+observation:
+  terms:
+  - source: base_angular_velocity_b
+    size: 3
+    transform:
+    - scale: 0.25
+  - source: projected_gravity_b
+    size: 3
+  - source: velocity_command
+    size: 3
+    transform:
+    - scale:
+      - 2.0
+      - 2.0
+      - 0.25
+  - source: joint_position
+    size: 12
+    joint_order: policy
+    transform:
+    - subtract: default_joint_position
+  - source: joint_velocity
+    size: 12
+    joint_order: policy
+    transform:
+    - scale: 0.05
+  - source: previous_action
+    size: 12
+    joint_order: policy
+  history:
+    frames: 1
+    order: newest_first
+  expected_size: 45
+action:
+  space: joint_position_offset
+  scale: 0.25
+  offset: default_joint_position
+  clip:
+  - -100.0
+  - 100.0
+  size: 12
+needs_review:
+- Confirm the hypothesized observation term semantics and ordering.
+- Confirm every observation transform scale and preprocessing operation.
+- Confirm the action scale, offset, clipping, and control frequency.

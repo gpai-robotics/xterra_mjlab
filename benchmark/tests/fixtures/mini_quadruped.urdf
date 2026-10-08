@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<robot name="mini_quad">
+  <link name="base">
+    <inertial><origin xyz="0 0 0"/><mass value="10"/><inertia ixx="0.1" ixy="0" ixz="0" iyy="0.2" iyz="0" izz="0.25"/></inertial>
+    <collision><origin xyz="0 0 0"/><geometry><box size="0.5 0.2 0.16"/></geometry></collision>
+  </link>
+  <link name="FL_hip"/><link name="FL_foot"><collision><geometry><sphere radius="0.025"/></geometry></collision></link>
+  <link name="FR_hip"/><link name="FR_foot"><collision><geometry><sphere radius="0.025"/></geometry></collision></link>
+  <link name="RL_hip"/><link name="RL_foot"><collision><geometry><sphere radius="0.025"/></geometry></collision></link>
+  <link name="RR_hip"/><link name="RR_foot"><collision><geometry><sphere radius="0.025"/></geometry></collision></link>
+  <joint name="FL_hip_joint" type="revolute"><parent link="base"/><child link="FL_hip"/><origin xyz="0.2 0.12 0"/><axis xyz="1 0 0"/><limit lower="-1" upper="1" effort="20" velocity="25"/></joint>
+  <joint name="FL_foot_joint" type="fixed"><parent link="FL_hip"/><child link="FL_foot"/><origin xyz="0 0 -0.35"/></joint>
+  <joint name="FR_hip_joint" type="revolute"><parent link="base"/><child link="FR_hip"/><origin xyz="0.2 -0.12 0"/><axis xyz="1 0 0"/><limit lower="-1" upper="1" effort="20" velocity="25"/></joint>
+  <joint name="FR_foot_joint" type="fixed"><parent link="FR_hip"/><child link="FR_foot"/><origin xyz="0 0 -0.35"/></joint>
+  <joint name="RL_hip_joint" type="revolute"><parent link="base"/><child link="RL_hip"/><origin xyz="-0.2 0.12 0"/><axis xyz="1 0 0"/><limit lower="-1" upper="1" effort="20" velocity="25"/></joint>
+  <joint name="RL_foot_joint" type="fixed"><parent link="RL_hip"/><child link="RL_foot"/><origin xyz="0 0 -0.35"/></joint>
+  <joint name="RR_hip_joint" type="revolute"><parent link="base"/><child link="RR_hip"/><origin xyz="-0.2 -0.12 0"/><axis xyz="1 0 0"/><limit lower="-1" upper="1" effort="20" velocity="25"/></joint>
+  <joint name="RR_foot_joint" type="fixed"><parent link="RR_hip"/><child link="RR_foot"/><origin xyz="0 0 -0.35"/></joint>
+</robot>
+

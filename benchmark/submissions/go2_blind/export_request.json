@@ -1,0 +1,34 @@
+{
+  "checkpoint": "logs/rsl_rl/go2_blind_rough_combined_asymppo_steps_v1/2026-07-16_10-14-29/model_5099.pt",
+  "command_ranges": {
+    "ang_vel_z": [
+      -0.6,
+      0.6
+    ],
+    "lin_vel_x": [
+      -0.8,
+      0.8
+    ],
+    "lin_vel_y": [
+      -0.3,
+      0.3
+    ]
+  },
+  "generated_artifacts": [
+    "go2_blind_rough_combined_asymppo_steps_v1_candidate.torchscript.pt",
+    "go2_blind_rough_combined_asymppo_steps_v1_candidate.onnx",
+    "go2_blind_rough_combined_asymppo_steps_v1_candidate.export_metadata.json",
+    "go2_blind_rough_combined_asymppo_steps_v1_candidate.deploy_config.json",
+    "go2_blind_rough_combined_asymppo_steps_v1_candidate.deploy.yaml"
+  ],
+  "note": "Export completed for the blind_history_policy runtime contract.",
+  "phase": "combined-asymppo-stairs-v1",
+  "policy_name": "go2_blind_rough_combined_asymppo_steps_v1_candidate",
+  "requested_formats": [
+    "torchscript",
+    "onnx"
+  ],
+  "resolved_policy_history_length": 100,
+  "status": "completed",
+  "task": "Go2-Blind-Rough-MJLAB-Combined-AsymPPO-Steps-V1"
+}

@@ -1,0 +1,67 @@
+schema_version: "1.0"
+skill_id: go2-extreme-parkour-teacher-export
+sensor_track: privileged
+robot_profile_sha256: ""
+control_frequency_hz: 50
+navigation:
+  mode: waypoint_heading
+  route_scope: fixed_route
+  assistance: benchmark_waypoints
+  lookahead: 2
+  representation: current_and_next_heading_error
+controller:
+  type: torchscript
+  path: ../../assets/cache/skills/go2_extreme_parkour_student/exported_teacher/policy.pt
+  input_tensors: [teacher_observation]
+  device: cpu
+sensors:
+  - name: route_waypoints
+    kind: waypoints
+    shape: [2, 3]
+    rate_hz: 10
+    parameters:
+      delivery: embedded_in_privileged_policy_state
+      values: [current_goal, next_goal]
+  - name: forward_velocity_command
+    kind: command
+    shape: [3]
+    rate_hz: 50
+    parameters:
+      delivery: embedded_in_privileged_policy_state
+  - name: privileged_policy_state
+    kind: privileged_state
+    shape: [753]
+    rate_hz: 50
+    parameters:
+      layout: extreme_parkour_actor_observation
+      num_proprioception: 53
+      num_scan: 132
+      num_privileged_explicit: 9
+      num_privileged_latent: 29
+      history_steps: 10
+observations:
+  - name: teacher_observation
+    sources: [privileged_policy_state]
+    shape: [753]
+    dtype: float32
+action:
+  mode: position
+  size: 12
+  joint_order:
+    - FL_hip_joint
+    - FL_thigh_joint
+    - FL_calf_joint
+    - FR_hip_joint
+    - FR_thigh_joint
+    - FR_calf_joint
+    - RL_hip_joint
+    - RL_thigh_joint
+    - RL_calf_joint
+    - RR_hip_joint
+    - RR_thigh_joint
+    - RR_calf_joint
+provenance:
+  source_bundle: ${FORESIGHT_ROOT}/checkpoints/baseline/go2_extreme_parkour_student.pt
+  role: privileged teacher reference
+  robot_model: Unitree Go2 from the source Isaac Lab task; cross-format conformance is not yet established
+  capability_claims: false until executed with the exact observation provider

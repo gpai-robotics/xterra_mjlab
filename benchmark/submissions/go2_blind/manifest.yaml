@@ -1,0 +1,114 @@
+# =============================================================================
+# RobustLab policy manifest (schema v2) for the exported bundle
+#   rma_go2_lab/policies/exported/go2_blind_rough_combined_asymppo_steps_v1_candidate
+#
+# Every value below traces to a line in that bundle's *.deploy.yaml.
+# Nothing here is invented.
+# =============================================================================
+schema_version: "2.0"
+policy_id: go2-blind-rough-steps-v1
+
+runtime:
+  format: onnx
+  path: ./policy.onnx
+  control_frequency_hz: 50          # deploy.yaml step_dt: 0.02
+  # forward(policy_obs, policy_history) -- call order read from the ONNX graph
+  inputs: [policy_obs, policy_history]
+
+# The SIMULATOR's joint ordering (per leg). Platform knowledge, and it must
+# match the bound robot profile's controller_joint_order.
+canonical_joint_order:
+  - FL_hip_joint
+  - FL_thigh_joint
+  - FL_calf_joint
+  - FR_hip_joint
+  - FR_thigh_joint
+  - FR_calf_joint
+  - RL_hip_joint
+  - RL_thigh_joint
+  - RL_calf_joint
+  - RR_hip_joint
+  - RR_thigh_joint
+  - RR_calf_joint
+
+# THE POLICY's joint ordering: hip-major, from deploy.yaml
+# actions.JointPositionAction.joint_names. This is the one that matters --
+# getting it wrong scrambles the legs at exactly the right width.
+joint_order_policy:
+  - FL_hip_joint
+  - FR_hip_joint
+  - RL_hip_joint
+  - RR_hip_joint
+  - FL_thigh_joint
+  - FR_thigh_joint
+  - RL_thigh_joint
+  - RR_thigh_joint
+  - FL_calf_joint
+  - FR_calf_joint
+  - RL_calf_joint
+  - RR_calf_joint
+
+# deploy.yaml default_joint_pos, rewritten into canonical_joint_order.
+# Named references are canonical; the platform reorders it for the action
+# offset, which is applied in the policy's order.
+references:
+  default_joint_position: [0.1, 0.8, -1.5, -0.1, 0.8, -1.5,
+                           0.1, 1.0, -1.5, -0.1, 1.0, -1.5]
+
+observation:
+  tensors:
+    # deploy.yaml observations.policy_order -- every scale there is 1.0,
+    # which is why no term carries one.
+    - name: policy_obs
+      size: 45
+      terms: &policy_terms
+        - {source: base_angular_velocity_b, size: 3}     # base_ang_vel
+        - {source: projected_gravity_b, size: 3}         # projected_gravity
+        - {source: velocity_command, size: 3}            # velocity_commands
+        - source: joint_position                         # joint_pos_rel
+          size: 12
+          joint_order: policy
+          transform: [{subtract: default_joint_position}]
+        - {source: joint_velocity, size: 12, joint_order: policy}  # joint_vel_rel
+        - {source: previous_action, size: 12}            # last_action
+
+    # policy_history_dim 4500 = 100 frames x the same 45 terms, laid out
+    # term-major (deploy.yaml history_layout: isaaclab_term_major).
+    #
+    # Confirmed against the training code: policy_history is an Isaac Lab
+    # group (history_length 100, flatten_history_dim, concatenate_terms), so
+    # each term's CircularBuffer is flattened oldest -> newest and the terms
+    # are concatenated. The ONNX graph reshapes it to [100, 45]; that is the
+    # network's own view and does NOT make the input frame-major. Do not flip
+    # either value -- both are 4500 wide, so nothing downstream catches it.
+    - name: policy_history
+      size: 4500
+      terms: *policy_terms
+      history: {frames: 100, order: oldest_first, layout: term_major}
+
+# deploy.yaml actions.JointPositionAction (+ stiffness / damping)
+action:
+  space: joint_position_offset
+  scale: 0.25
+  offset: default_joint_position
+  clip: [-100.0, 100.0]
+  stiffness: 25.0
+  damping: 0.5
+  # Isaac Lab DCMotor the policy trained with: 23.5 Nm at rest, falling
+  # linearly to zero torque at 30 rad/s (training repo
+  # CROSS_SIMULATOR_VALIDATION_CONTRACT.md).
+  motor: {model: dc_motor, saturation_effort: 23.5, effort_limit: 23.5, velocity_limit: 30.0}
+  size: 12
+  joint_order:
+    - FL_hip_joint
+    - FR_hip_joint
+    - RL_hip_joint
+    - RR_hip_joint
+    - FL_thigh_joint
+    - FR_thigh_joint
+    - RL_thigh_joint
+    - RR_thigh_joint
+    - FL_calf_joint
+    - FR_calf_joint
+    - RL_calf_joint
+    - RR_calf_joint

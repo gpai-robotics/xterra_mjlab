@@ -1,0 +1,38 @@
+schema_version: "2.0"
+policy_id: go2-blind
+runtime:
+  format: onnx
+  path: ./policy.onnx
+  control_frequency_hz: 50
+observation:
+  terms:
+    - {source: base_angular_velocity_b, size: 3}
+    - {source: projected_gravity_b, size: 3}
+    - {source: velocity_command, size: 3}
+    - {source: joint_position, transform: [{subtract: default_joint_position}], joint_order: policy, size: 12}
+    - {source: joint_velocity, joint_order: policy, size: 12}
+    - {source: previous_action, size: 12}
+  history:
+    frames: 100
+    order: newest_first
+    layout: term_major
+  expected_size: 4500
+action:
+  space: joint_position_offset
+  scale: 0.25
+  offset: default_joint_position
+  clip: [-100.0, 100.0]
+  size: 12
+joint_order_policy:
+  - FL_hip_joint
+  - FR_hip_joint
+  - RL_hip_joint
+  - RR_hip_joint
+  - FL_thigh_joint
+  - FR_thigh_joint
+  - RL_thigh_joint
+  - RR_thigh_joint
+  - FL_calf_joint
+  - FR_calf_joint
+  - RL_calf_joint
+  - RR_calf_joint

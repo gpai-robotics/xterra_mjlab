@@ -1,0 +1,55 @@
+schema_version: "1.0"
+runtimes:
+  coordinator:
+    imports: [yaml, numpy, jinja2]
+    required: true
+    requires_gpu: false
+  mujoco:
+    imports: [mujoco, numpy]
+    required: true
+    requires_gpu: false
+    expected_version: 3.11.0
+    features:
+      geometry: [box]
+      contact_forces: true
+      camera: false
+      environment_effects: [linear_velocity_drag]
+      stressors: [push, push_impulse_ns, action_latency_s, perception_latency_s]
+  isaaclab:
+    launcher: ${ROBUSTLAB_ISAACLAB_LAUNCHER}
+    imports: [isaaclab]
+    required: false
+    requires_gpu: true
+    worker_args: [-p]
+    version_file: ${ROBUSTLAB_ISAACLAB_ROOT}/VERSION
+    expected_version: 2.3.2
+    expected_sim_version: "5.1"
+    features:
+      geometry: [box]
+      contact_forces: true
+      camera: false
+      environment_effects: [linear_velocity_drag]
+      stressors: []
+  isaacgym:
+    python: ${ROBUSTLAB_ISAACGYM_PYTHON}
+    imports: [isaacgym, torch]
+    required: false
+    requires_gpu: true
+    expected_version: preview4
+    features:
+      geometry: [box]
+      contact_forces: true
+      camera: false
+      environment_effects: [linear_velocity_drag]
+      stressors: []
+  fake:
+    imports: []
+    required: false
+    requires_gpu: false
+    expected_version: analytical-v1
+    features:
+      geometry: [box]
+      contact_forces: true
+      camera: false
+      environment_effects: []
+      stressors: [friction_scale, payload_fraction, com_offset_m, action_latency_s, perception_latency_s, depth_dropout, action_dropout, push_impulse_ns]

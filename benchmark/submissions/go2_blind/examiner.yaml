@@ -1,0 +1,43 @@
+# =============================================================================
+# Examiner config -- the file you actually pass to the CLI.
+#
+#   PYTHONPATH=src python3 -m robustness_lab preflight \
+#       submissions/go2_blind/examiner.yaml --static-only
+#   PYTHONPATH=src python3 -m robustness_lab launch \
+#       submissions/go2_blind/examiner.yaml --max-trials 5
+#
+# Paths are relative to THIS file.
+# =============================================================================
+schema_version: "2.0"
+examiner_id: go2-blind-rough-steps-v1
+scheduler: discrete_pruned_v2
+backend: mujoco
+
+# The robot the policy is evaluated on. Note its stance (0.0 / 0.9 / -1.8)
+# differs from the pose this policy was trained to offset from
+# (0.1 / 0.8 / 1.0 / -1.5); the manifest declares its own, which is correct --
+# the reference pose belongs to the policy, not to the robot.
+robot_profile: ../../assets/cache/go2_mjcf_profile.json
+# The stock Menagerie Go2 with its passive joint damping/frictionloss removed
+# and efforts capped at 23.5 Nm -- the plant this policy trained on. See the
+# header of go2_training_plant.xml.
+robot_asset: ./go2_training_plant.xml
+robot_format: mjcf
+
+skill: ./skill.yaml
+runtimes: ../../configs/runtimes.yaml
+output_dir: ../../runs/submissions/go2_blind
+
+terrain_codes: [rs1, rs2, rs3, rs4, rs5, rs6, rs7, rs8, rs9, rs10, rs11]
+seed: 1701
+timeout_s: 20                   # SIMULATED seconds, not wall clock
+
+discrete:
+  screening_repetitions: 3
+  confirmation_repetitions: 10
+  confirmation_successes: 7
+  record_video_all_trials: true
+  parallel_trials: 24
+  infrastructure_retries: 2
+  fixed_pair_static_friction: 0.50
+  fixed_pair_dynamic_friction: 0.40

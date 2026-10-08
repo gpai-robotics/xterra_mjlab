@@ -1,0 +1,219 @@
+# ============================================================================
+# POLICY MANIFEST  (schema v2)  --  this is the file YOU write.
+#
+# It maps YOUR policy's inputs onto the benchmark's observation sources.
+# We never modify your policy; this only states what it already expects.
+#
+#   Available sources ....... docs/observation_sources.md   (76 of them)
+#   Who provides what ....... docs/submission_contract.md
+#   Full guide .............. docs/bring_your_own_policy.md
+#
+# Don't write this from scratch. Generate a draft from your weights:
+#
+#   robustlab policy scaffold my_policy.pt \
+#       --robot-profile runs/go2_profile.json \
+#       --output my_policy.yaml
+#
+# then correct whatever it lists under needs_review.
+# ============================================================================
+
+schema_version: "2.0"
+policy_id: my-go2-policy
+
+runtime:
+  format: torchscript              # torchscript | onnx
+  path: ./my_policy.pt
+  control_frequency_hz: 50
+  # If forward() takes several tensors, name them in CALL ORDER.
+  # We probe your artifact and refuse the run if the count disagrees.
+  # inputs: [x, scandots_latent]
+
+# ---------------------------------------------------------------------------
+# THE MAPPING.
+#
+# `sources` is your observation vector IN THE ORDER your network expects.
+# Plain entries need only a canonical name; mapping entries add transforms,
+# joint permutation, an instance, geometry, or a one-entry width override.
+# Widths are otherwise computed from the canonical source metadata, this
+# robot's joints/feet, and sensor geometry.
+#
+# Worked example -- 47 instead of the standard 48 for a 12-joint policy:
+#
+#   sources:
+#     - base_linear_velocity_b              # 3
+#     - base_angular_velocity_b             # 3
+#     - source: projected_gravity_b         # 2 instead of 3
+#       size: 2
+#       transform: [{select: [0, 2]}]
+#     - velocity_command                    # 3
+#     - joint_position                      # 12 (derived)
+#     - joint_velocity                      # 12 (derived)
+#     - previous_action                     # 12 (derived)
+#   expected_size: 47
+#
+# The override is the expected width AFTER transforms. It does not disable
+# build-time validation: selecting three values above, or omitting `select`,
+# would still fail because the entry declares 2.
+#
+# We build each source from the simulator and hand it to you exactly as you
+# describe it here. If your description is wrong, the verification gates catch
+# it and report adapter_unverified -- we never score a wrong mapping as your
+# policy failing.
+# ---------------------------------------------------------------------------
+observation:
+  sources:
+    - source: base_angular_velocity_b        # IMU gyro, body frame, rad/s
+      transform: [{scale: 0.25}]             # applied IN ORDER, top to bottom
+
+    - projected_gravity_b                    # gravity direction in body frame
+
+    - source: velocity_command               # vx, vy, yaw-rate
+      transform: [{scale: [2.0, 2.0, 0.25]}] # per-element scaling
+
+    - source: joint_position                 # rad
+      transform: [{subtract: default_joint_position}]
+      joint_order: policy                    # remap sim order -> YOUR order
+
+    - source: joint_velocity
+      transform: [{scale: 0.05}]
+      joint_order: policy
+
+    - previous_action                        # your last raw network output
+
+  # Frame stacking. The buffer is zero-filled at reset and cleared between
+  # trials.
+  #
+  #   order   newest_first puts the current frame at the FRONT; oldest_first
+  #           puts it at the back. REQUIRED once frames > 1 -- stacking the
+  #           wrong way round has the same width as stacking the right way
+  #           round, so nothing downstream can catch it. Only you know which
+  #           end of your buffer is the newest frame.
+  #
+  #   layout  frame_major (default) stacks whole frames:
+  #               [frame_t, frame_t-1, ...]
+  #           term_major concatenates each term's whole history in turn:
+  #               [100 frames of base_ang_vel, 100 of projected_gravity, ...]
+  #           Isaac Lab and mjlab export term_major; their deploy configs say
+  #           so as `history_layout: isaaclab_term_major`. Both layouts are
+  #           the same total width, so declaring the wrong one is silent.
+  history:
+    frames: 1
+    order: newest_first
+
+  # Optional assertion of the computed total after history. When present it
+  # is checked against the compiled source list and your artifact at load.
+  expected_size: 45
+
+# ---------------------------------------------------------------------------
+# ACTION. Pipeline order is clip -> scale -> offset (legged_gym / RSL-RL).
+# ---------------------------------------------------------------------------
+action:
+  space: joint_position_offset
+  scale: 0.25
+  offset: default_joint_position
+  clip: [-100.0, 100.0]
+  # Copy the position-controller gains from YOUR deployment config. Scalars
+  # are broadcast; lists are declared in joint_order_policy order.
+  stiffness: 25.0
+  damping: 0.5
+  size: 12
+
+# YOUR joint ordering. We build the permutation both ways, so you do not have
+# to match the simulator's ordering.
+#
+# NOTE: `canonical_joint_order` below is the SIMULATOR's ordering and is
+# platform knowledge, not yours. `robustlab policy scaffold --robot-profile`
+# fills it in from the robot profile. It is written out here only so this
+# template validates standalone; you should not have to author it.
+canonical_joint_order:
+  - FL_hip_joint
+  - FL_thigh_joint
+  - FL_calf_joint
+  - FR_hip_joint
+  - FR_thigh_joint
+  - FR_calf_joint
+  - RL_hip_joint
+  - RL_thigh_joint
+  - RL_calf_joint
+  - RR_hip_joint
+  - RR_thigh_joint
+  - RR_calf_joint
+
+joint_order_policy:
+  - FL_hip_joint
+  - FL_thigh_joint
+  - FL_calf_joint
+  - FR_hip_joint
+  - FR_thigh_joint
+  - FR_calf_joint
+  - RL_hip_joint
+  - RL_thigh_joint
+  - RL_calf_joint
+  - RR_hip_joint
+  - RR_thigh_joint
+  - RR_calf_joint
+
+# The Go2 stance, in `canonical_joint_order`. Naming `default_joint_position`
+# above obliges you to say what it is. When the run binds a robot profile the
+# platform fills this in from the robot and you can delete the section; it is
+# written out here, like `canonical_joint_order`, so the template validates
+# standalone. A declared stance that disagrees with the bound robot is refused
+# rather than silently offsetting every joint.
+references:
+  default_joint_position: [0.1, 0.8, -1.5, -0.1, 0.8, -1.5, 0.1, 1.0, -1.5, -0.1, 1.0, -1.5]
+
+# ===========================================================================
+# OPTIONAL SECTIONS -- delete if unused.
+# ===========================================================================
+#
+# --- Several cameras / range sensors -------------------------------------
+# Sources marked `multi` in docs/observation_sources.md can appear more than
+# once; name which instance each term reads.
+#
+#   sources:
+#     - source: depth_image
+#       instance: front
+#       geometry: {kind: camera, resolution: [58, 87], hfov_deg: 87.0,
+#                  near: 0.1, far: 5.0, position_b: [0.3, 0.0, 0.05],
+#                  orientation_wxyz: [1.0, 0.0, 0.0, 0.0], encoding: metres}
+#
+# --- Height scan ----------------------------------------------------------
+# Exteroceptive sources MUST declare geometry. A scan without its grid is
+# unanswerable, not under-specified.
+#
+#   geometry:
+#     height_scan: {kind: grid, x_range: [-0.8, 0.8], y_range: [-0.5, 0.5],
+#                   resolution: 0.1}
+#   sources: [..., height_scan]
+#
+# --- Your own preprocessing network ---------------------------------------
+# We load it, feed it, and route its output into your policy. The weights stay
+# yours and are recorded as provided_by: researcher.
+#
+# encoders:
+#   - name: depth_encoder
+#     path: ./depth_latest.pt
+#     inputs:
+#       - {name: depth_image, shape: [58, 87]}
+#       - {name: proprioception, shape: [53]}
+#     output: {name: depth_out, size: 34}
+#
+# observation:
+#   tensors:                     # use `tensors` instead of `terms` for
+#     - name: x                  # multi-input policies
+#       terms: [ ... ]
+#     - name: scandots_latent
+#       from_encoder: depth_encoder
+#       transform: [{select: {start: 0, count: 32}}]   # 34 -> 32
+#       size: 32
+#
+# --- Preprocessing we don't have a name for -------------------------------
+# 21 transforms are built in (scale, subtract, clip, select, normalize, add,
+# negate, abs, power, tanh, log1p, reciprocal, pad, repeat, clamp_norm,
+# one_hot, quat_to_euler, quat_to_projected_gravity, quat_to_rotmat,
+# rotate_by_yaw, to_body_frame). If yours isn't there, supply a callable:
+#
+#   transform: [{custom: {target: my_module:my_function}}]
+#
+# Arbitrary code is opt-in, and its output is still checked for finiteness and
+# still subject to the known-pose and flat-ground gates.

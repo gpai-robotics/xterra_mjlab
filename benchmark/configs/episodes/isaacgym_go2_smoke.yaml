@@ -1,0 +1,21 @@
+episode_id: go2-isaacgym-rs8-smoke
+backend: isaacgym
+robot_profile: assets/cache/go2_urdf_profile.json
+robot_asset: assets/cache/unitree_ros/robots/go2_description/urdf/go2_description.urdf
+robot_format: urdf
+world: runs/go2-rs8-world.json
+controller:
+  type: pd_hold
+  stiffness: 25.0
+  damping: 0.5
+  command: [0.0, 0.0, 0.0]
+output_dir: runs/isaacgym-go2-smoke
+seed: 44
+dt_s: 0.005
+control_decimation: 4
+timeout_s: 2.0
+headless: true
+metadata:
+  use_gpu: true
+  use_gpu_pipeline: true
+

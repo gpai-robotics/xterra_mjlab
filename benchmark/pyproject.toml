@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "robustness-lab"
+version = "0.1.0"
+description = "Simulator-neutral legged-robot robustness evaluation laboratory"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [{ name = "xTerra Plaksha" }]
+dependencies = [
+  "numpy>=1.24",
+  "PyYAML>=6.0",
+  "Jinja2>=3.1",
+  "Pillow>=9.0",
+]
+
+[project.optional-dependencies]
+analytics = ["scipy>=1.10", "pandas>=2.0", "pyarrow>=14", "matplotlib>=3.7"]
+mujoco = ["mujoco>=3.0", "Pillow>=9.0"]
+onnx = ["onnx>=1.14", "onnxruntime>=1.16"]
+test = ["pytest>=8", "pytest-cov>=5"]
+
+[project.scripts]
+robustlab = "robustness_lab.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-ra"
