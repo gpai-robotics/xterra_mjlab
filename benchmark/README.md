@@ -32,8 +32,20 @@ robustlab launch submissions/go2_blind/examiner.yaml --max-trials 5
 robustlab examine resume runs/submissions/go2_blind/examination_state.json
 ```
 
-Results: open `runs/submissions/go2_blind/dashboard/index.html` for pass/fail per
-condition, diagnostics and per-trial videos.
+### After the run
+
+The `go2_blind` run is already set up, so these work on it as-is. All paths are relative to `benchmark/`.
+
+- **Dashboard (HTML):** written during the run. Open `runs/submissions/go2_blind/dashboard/index.html` for pass/fail per terrain, diagnostics and videos.
+- **Export videos** into one folder, named by level, result and terrain, with an `INDEX.md`:
+  ```bash
+  python3 scripts/export_unique_scenario_videos.py --submission-dir runs/submissions/go2_blind --dest-dir unique_scenario_videos
+  ```
+  Output: `benchmark/unique_scenario_videos/`. Add `--move` to move files instead of copying.
+- **One-trial HTML report** (optional):
+  ```bash
+  robustlab report runs/submissions/go2_blind/trials/L0-flat-a01 --output runs/submissions/go2_blind/reports/L0-flat-a01.html
+  ```
 
 ### Troubleshooting
 
@@ -59,9 +71,25 @@ condition gets 3 seeds; a mixed result is retried 10 times and needs 7 successes
 
 ## Benchmark your own policy
 
-Copy `submissions/go2_blind/`, replace `policy.onnx`, and update `manifest.yaml`
-and `skill.yaml` to match your network. `preflight` catches any mismatch before a
-run starts. Full guide: [`docs/bring_your_own_policy.md`](docs/bring_your_own_policy.md).
+`go2_blind` is the reference. To test your own policy, copy it and give the copy its own output folder:
+
+```bash
+cp -r submissions/go2_blind submissions/my_policy
+sed -i 's#output_dir: ../../runs/submissions/go2_blind#output_dir: ../../runs/submissions/my_policy#' submissions/my_policy/examiner.yaml
+```
+
+Then:
+
+1. Replace `submissions/my_policy/policy.onnx` with your network (same file name, or update `path:` in `submissions/my_policy/manifest.yaml`).
+2. Update `submissions/my_policy/manifest.yaml` and `skill.yaml` to match your network: observation layout, action scale, PD gains and joint order.
+3. Run the same commands with `my_policy` in place of `go2_blind`:
+
+```bash
+robustlab preflight submissions/my_policy/examiner.yaml
+robustlab launch submissions/my_policy/examiner.yaml
+```
+
+Results go to `runs/submissions/my_policy/`, and the export and report commands above work with that path. `preflight` rejects any mismatch before a run starts. Full guide: [`docs/bring_your_own_policy.md`](docs/bring_your_own_policy.md).
 
 ## Docs
 
