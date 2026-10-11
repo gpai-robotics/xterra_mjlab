@@ -1,0 +1,37 @@
+# Copy this file, replace every angle-bracket value, and keep paths relative to
+# the copied YAML when possible.
+schema_version: "2.0"
+examiner_id: <robot-policy-name>
+scheduler: discrete_pruned_v2
+backend: <mujoco|isaaclab|isaacgym|foresight_native>
+robot_profile: <path-to-robot-profile.json>
+robot_asset: <path-to-robot.urdf|robot.xml|robot.usd>
+robot_format: <urdf|mjcf|usd>
+skill: <path-to-skill.yaml>
+runtimes: ../runtimes.yaml
+output_dir: ../../runs/<robot-policy-name>
+terrain_codes: [rs1, rs2, rs3, rs4, rs5, rs6, rs7, rs8, rs9, rs10, rs11]
+seed: 1701
+timeout_s: 20
+
+discrete:
+  protocol_variant_id: reference
+  geometry_levels:
+    - {label: medium, value: 0.50}
+    - {label: easy, value: 0.25}
+    - {label: hard, value: 0.75}
+  friction_levels:
+    - {label: high, static: 0.75, dynamic: 0.60}
+    - {label: moderate, static: 0.50, dynamic: 0.40}
+    - {label: low, static: 0.25, dynamic: 0.20}
+  qualification_friction_label: moderate
+  screening_repetitions: 3
+  confirmation_repetitions: 10
+  confirmation_successes: 7
+  infrastructure_retries: 2
+  fixed_pair_static_friction: 0.50
+  fixed_pair_dynamic_friction: 0.40
+  native_batch_size: 32
+  capture_native_telemetry: true
+  native_telemetry_stride: 10
+  record_video_all_trials: false

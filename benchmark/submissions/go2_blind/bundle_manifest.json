@@ -1,0 +1,21 @@
+{
+  "control_rate_hz": 50.0,
+  "deployable_observation_groups": [
+    "policy",
+    "policy_history"
+  ],
+  "exported_artifacts": [
+    "go2_blind_rough_combined_asymppo_steps_v1_candidate.torchscript.pt",
+    "go2_blind_rough_combined_asymppo_steps_v1_candidate.onnx",
+    "go2_blind_rough_combined_asymppo_steps_v1_candidate.export_metadata.json",
+    "go2_blind_rough_combined_asymppo_steps_v1_candidate.deploy_config.json",
+    "go2_blind_rough_combined_asymppo_steps_v1_candidate.deploy.yaml"
+  ],
+  "freeze_note": "Combined AsymPPO stairs model_5099.pt; Isaac Sim nominal visual smoke passed on 2026-07-20.",
+  "latent_update_semantics": "",
+  "phase": "combined-asymppo-stairs-v1",
+  "policy_kind": "blind_history_policy",
+  "policy_name": "go2_blind_rough_combined_asymppo_steps_v1_candidate",
+  "source_checkpoint": "logs/rsl_rl/go2_blind_rough_combined_asymppo_steps_v1/2026-07-16_10-14-29/model_5099.pt",
+  "task": "Go2-Blind-Rough-MJLAB-Combined-AsymPPO-Steps-V1"
+}

@@ -1,0 +1,145 @@
+title: Connected AE Entity Networks — Go2
+dt_s: 0.002
+width_px: 640
+height_px: 480
+gl_backend: osmesa
+azimuth_deg: 135
+elevation_deg: -52
+distance_scale: 0.72
+
+variations:
+  - name: grid-2x2-repeat-mud-slope
+    title: 2×2 junctions — repeated mud+slope entities
+    terrain: aee
+    layout: grid
+    rows: 2
+    columns: 2
+    pair_mode: repeat
+    purple: rs11
+    brown: rs4
+    difficulty: 0.55
+    seed: 2101
+    set:
+      connector_margin_m: 0.45
+      cell_overrides:
+        approach_m: 0.7
+        transition_length_m: 0.35
+        landing_m: 0.7
+        central_width_m: 0.7
+        bypass_width_m: 0.35
+        lane_gap_m: 0.04
+        purple_length_m: 1.3
+        purple_patch_m: 0.14
+        brown_run_m: 1.0
+        brown_slope_rad: 0.20944
+        brown_roughness_amplitude_m: 0.025
+
+  - name: grid-2x3-cycle-mixed
+    title: 2×3 junctions — seven different AE edges
+    terrain: aee
+    layout: grid
+    rows: 2
+    columns: 3
+    pair_mode: cycle
+    difficulty: 0.60
+    seed: 2201
+    set:
+      connector_margin_m: 0.4
+      cell_overrides:
+        approach_m: 0.65
+        transition_length_m: 0.35
+        landing_m: 0.65
+        central_width_m: 0.7
+        bypass_width_m: 0.35
+        lane_gap_m: 0.04
+
+  - name: grid-3x3-repeat-rough-stairs
+    title: 3×3 junctions — repeated rough+stairs entities
+    terrain: aee
+    layout: grid
+    rows: 3
+    columns: 3
+    pair_mode: repeat
+    purple: rs2
+    brown: rs5
+    difficulty: 0.65
+    seed: 2301
+    set:
+      connector_margin_m: 0.4
+      cell_overrides:
+        approach_m: 0.65
+        transition_length_m: 0.35
+        landing_m: 0.65
+        central_width_m: 0.7
+        bypass_width_m: 0.35
+        lane_gap_m: 0.04
+        purple_length_m: 1.3
+        purple_roughness_amplitude_m: 0.035
+        brown_step_count: 4
+        brown_step_rise_m: 0.055
+        brown_step_tread_m: 0.16
+
+  - name: grid-3x3-random-mixed
+    title: 3×3 junctions — random seeded AE network
+    terrain: aee
+    layout: grid
+    rows: 3
+    columns: 3
+    pair_mode: random
+    difficulty: 0.70
+    seed: 2401
+    set:
+      connector_margin_m: 0.4
+      cell_overrides:
+        approach_m: 0.65
+        transition_length_m: 0.35
+        landing_m: 0.65
+        central_width_m: 0.7
+        bypass_width_m: 0.35
+        lane_gap_m: 0.04
+
+  - name: grid-3x4-repeat-gap-step
+    title: 3×4 junctions — repeated large-gap+step entities
+    terrain: aee
+    layout: grid
+    rows: 3
+    columns: 4
+    pair_mode: repeat
+    purple: rs9
+    brown: rs10
+    difficulty: 0.72
+    seed: 2501
+    set:
+      connector_margin_m: 0.42
+      cell_overrides:
+        approach_m: 0.65
+        transition_length_m: 0.35
+        landing_m: 0.65
+        central_width_m: 0.7
+        bypass_width_m: 0.35
+        lane_gap_m: 0.04
+        purple_gap_m: 0.25
+        purple_takeoff_m: 0.65
+        brown_rise_m: 0.2
+        brown_platform_m: 0.8
+
+  - name: grid-4x4-cycle-network
+    title: 4×4 junctions — 24-edge cyclic mixed network
+    terrain: aee
+    layout: grid
+    rows: 4
+    columns: 4
+    pair_mode: cycle
+    difficulty: 0.65
+    seed: 2601
+    elevation_deg: -60
+    distance_scale: 0.66
+    set:
+      connector_margin_m: 0.38
+      cell_overrides:
+        approach_m: 0.6
+        transition_length_m: 0.3
+        landing_m: 0.6
+        central_width_m: 0.65
+        bypass_width_m: 0.32
+        lane_gap_m: 0.035

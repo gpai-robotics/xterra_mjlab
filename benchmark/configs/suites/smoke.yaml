@@ -1,0 +1,9 @@
+schema_version: "1.0"
+suite_id: smoke
+description: One deterministic episode per selected terrain/backend for wiring validation.
+repetitions: 1
+terrain_codes: [rs1, rs5, rs8, rs11, ae]
+difficulties: [0.35]
+seeds: [101]
+backends: [fake]
+

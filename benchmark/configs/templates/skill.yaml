@@ -1,0 +1,51 @@
+# DEPRECATED -- schema v1. Kept for existing configs only.
+# New submissions use configs/templates/policy.yaml (schema v2), which supports
+# multi-input policies, encoder sub-artifacts, multi-instance sensors, and the
+# full 76-source vocabulary in docs/observation_sources.md.
+# This file describes an existing policy. RobustLab does not retrain or alter it.
+schema_version: "1.0"
+skill_id: <policy-name>
+sensor_track: blind
+robot_profile_sha256: <copy-source_sha256-from-robot-profile-or-leave-empty>
+control_frequency_hz: 50
+
+navigation:
+  mode: velocity_command
+  route_scope: straight_only
+  assistance: route_follower
+  lookahead: 0
+
+controller:
+  type: <python|torchscript|onnx|native_rsl_rl>
+  path: <policy-artifact-path>
+  # Python controllers use target: package.module:function instead of path.
+  # Native RSL-RL controllers also declare source_root and task.
+
+sensors:
+  - name: joints
+    kind: joint_position
+    shape: [12]
+    rate_hz: 50
+  - name: joint_rates
+    kind: joint_velocity
+    shape: [12]
+    rate_hz: 50
+  - name: command
+    kind: command
+    shape: [3]
+    rate_hz: 50
+
+observations:
+  - name: policy_input
+    sources: [joints, joint_rates, command]
+    shape: [27]
+    dtype: float32
+
+action:
+  mode: position
+  size: 12
+  joint_order: [<joint-1>, <joint-2>, <joint-3>, <joint-4>, <joint-5>, <joint-6>, <joint-7>, <joint-8>, <joint-9>, <joint-10>, <joint-11>, <joint-12>]
+
+provenance:
+  repository: <source-repository-or-package>
+  revision: <commit-or-release>

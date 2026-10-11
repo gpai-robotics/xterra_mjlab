@@ -1,0 +1,16 @@
+episode_id: go2-mujoco-hold
+backend: mujoco
+robot_profile: assets/cache/go2_mjcf_profile.json
+robot_asset: assets/cache/mujoco_menagerie/unitree_go2/go2.xml
+robot_format: mjcf
+world: runs/calibration-worlds-mjcf/actuator_step.json
+controller:
+  type: pd_hold
+  command: [0.0, 0.0, 0.0]
+output_dir: runs/mujoco-go2-hold
+seed: 43
+dt_s: 0.002
+control_decimation: 10
+timeout_s: 2.0
+headless: true
+record_video: false

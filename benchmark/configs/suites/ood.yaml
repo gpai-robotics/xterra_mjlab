@@ -1,0 +1,11 @@
+schema_version: "1.0"
+suite_id: locked-ood-v1
+description: Do not tune against these seeds or condition combinations.
+locked: true
+repetitions: 30
+seed_base: 890000
+terrain_codes: [rs3, rs4, rs8, rs9, rs10, rs11, ae, aee]
+difficulties: [0.65, 0.8, 0.95]
+stressors:
+  sampling: sobol
+  dimensions: [friction_scale, payload_fraction, com_offset_m, action_latency_s, perception_latency_s, depth_dropout, push_impulse_ns]

@@ -1,0 +1,23 @@
+schema_version: "1.0"
+examiner_id: go2-adaptive-orchestration
+backend: fake
+robot_profile: ../../assets/cache/go2_mjcf_profile.json
+robot_asset: ../../assets/cache/mujoco_menagerie/unitree_go2/go2.xml
+robot_format: mjcf
+skill: ../skills/go2_extreme_parkour_teacher.yaml
+runtimes: ../runtimes.yaml
+output_dir: ../../runs/adaptive_examiner/go2_fake_v2
+terrain_codes: [rs1, rs2, rs3, rs4, rs5, rs6, rs7, rs8, rs9, rs10, rs11]
+seed: 1701
+timeout_s: 20
+adaptive:
+  screening_severities: [0.2, 0.5, 0.8]
+  minimum_severity: 0.0
+  maximum_severity: 1.0
+  boundary_tolerance: 0.05
+  exploration_repetitions: 1
+  confirmation_min_repetitions: 4
+  confirmation_max_repetitions: 4
+  target_success_probability: 0.5
+  pruning_audit_fraction: 0.1
+  interaction_count: 10

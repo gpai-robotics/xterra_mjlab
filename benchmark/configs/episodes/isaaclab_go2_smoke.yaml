@@ -1,0 +1,19 @@
+episode_id: go2-isaaclab-rs8-smoke
+backend: isaaclab
+robot_profile: assets/cache/go2_urdf_profile.json
+robot_asset: assets/cache/go2_isaaclab/go2.usd
+robot_format: usd
+world: runs/go2-rs8-world.json
+controller:
+  type: pd_hold
+  stiffness: 25.0
+  damping: 0.5
+  command: [0.0, 0.0, 0.0]
+output_dir: runs/isaaclab-go2-smoke
+seed: 45
+dt_s: 0.005
+control_decimation: 4
+timeout_s: 2.0
+headless: true
+metadata:
+  device: cuda:0

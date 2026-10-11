@@ -1,0 +1,12 @@
+schema_version: "1.0"
+suite_id: standard
+description: Thirty-episode fixed-condition capability profile.
+repetitions: 30
+terrain_codes: [rs1, rs2, rs3, rs4, rs5, rs6, rs7, rs8, rs9, rs10, rs11, ae, aee]
+difficulties: [0.1, 0.3, 0.5, 0.7, 0.9]
+seed_base: 10000
+# For learned policies, add controller_training_seeds and use
+# {controller_seed} in the controller checkpoint/model path.
+ae_pairs: all
+aee_layout: long
+aee_count: 20

@@ -1,0 +1,63 @@
+# =============================================================================
+# Skill package: binds the schema-v2 policy manifest to the examiner.
+#
+# The manifest (./manifest.yaml) owns the real observation and action contract.
+# What appears here is the skill-level declaration the examiner needs in order
+# to schedule and gate the run; it must agree with the manifest, and preflight
+# checks that it does.
+# =============================================================================
+schema_version: "1.0"
+skill_id: go2-blind-rough-steps-v1
+sensor_track: blind             # deploy.yaml policy_kind: blind_history_policy
+robot_profile_sha256: ""
+control_frequency_hz: 50        # deploy.yaml step_dt: 0.02
+
+# Read by the observation gates and the deployability check.
+policy_manifest: ./manifest.yaml
+
+navigation:
+  # The policy consumes velocity_commands only. The platform's route follower
+  # steers it along the world's route; the policy does not choose a route.
+  mode: velocity_command
+  route_scope: straight_only
+  assistance: route_follower
+
+controller:
+  type: compiled_policy
+  manifest: ./manifest.yaml
+  device: cpu
+  # deploy.yaml commands.base_velocity.default, inside its declared ranges
+  # (lin_vel_x -0.8..0.8, lin_vel_y -0.3..0.3, ang_vel_z -0.6..0.6).
+  # command: [0.5, 0.0, 0.0]
+  # Must walk on flat ground before any terrain is scored (G4). Failure is
+  # reported as adapter_unverified, never as a policy failure.
+  flat_ground_gate: true
+
+sensors:
+  - name: velocity_command
+    kind: command
+    shape: [3]
+    rate_hz: 50
+    parameters:
+      delivery: route_follower_velocity_command
+
+observations: []
+
+# Mirrors the manifest's action block. joint_order is the POLICY's hip-major
+# ordering, from deploy.yaml actions.JointPositionAction.joint_names.
+action:
+  mode: position
+  size: 12
+  joint_order:
+    - FL_hip_joint
+    - FR_hip_joint
+    - RL_hip_joint
+    - RR_hip_joint
+    - FL_thigh_joint
+    - FR_thigh_joint
+    - RL_thigh_joint
+    - RR_thigh_joint
+    - FL_calf_joint
+    - FR_calf_joint
+    - RL_calf_joint
+    - RR_calf_joint

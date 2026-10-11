@@ -1,0 +1,25 @@
+schema_version: "1.0"
+assets:
+  - name: unitree_ros_go2
+    kind: git
+    url: https://github.com/unitreerobotics/unitree_ros.git
+    revision: daadf41ee9afce8f90fdc09a98506012691fa122
+    path: unitree_ros
+    sparse_paths: [robots/go2_description, LICENSE]
+    license: BSD-3-Clause
+    license_path: LICENSE
+    primary_robot: robots/go2_description/urdf/go2_description.urdf
+  - name: mujoco_menagerie_go2
+    kind: git
+    url: https://github.com/google-deepmind/mujoco_menagerie.git
+    revision: da76818e269b82289eba39808e2fb91d679d6994
+    path: mujoco_menagerie
+    sparse_paths: [unitree_go2]
+    license: BSD-3-Clause
+    license_path: unitree_go2/LICENSE
+    primary_robot: unitree_go2/go2.xml
+verified_files:
+  - path: unitree_ros/robots/go2_description/urdf/go2_description.urdf
+    sha256: 7d19fe48e2e689ee1a032ab99f2a4a8b671d87e73de48d3e65811682a5b48b9e
+  - path: mujoco_menagerie/unitree_go2/go2.xml
+    sha256: 50adb09a4365293e2acdaf2010ae35a82b0f09fea18ae51806fef91e310ed04a

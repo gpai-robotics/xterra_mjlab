@@ -1,0 +1,844 @@
+{
+  "actuators": [
+    {
+      "control_lower": -23.7,
+      "control_upper": 23.7,
+      "effort_limit": 23.7,
+      "joint": "FL_hip_joint",
+      "name": "FL_hip",
+      "velocity_limit": null
+    },
+    {
+      "control_lower": -23.7,
+      "control_upper": 23.7,
+      "effort_limit": 23.7,
+      "joint": "FL_thigh_joint",
+      "name": "FL_thigh",
+      "velocity_limit": null
+    },
+    {
+      "control_lower": -45.43,
+      "control_upper": 45.43,
+      "effort_limit": 45.43,
+      "joint": "FL_calf_joint",
+      "name": "FL_calf",
+      "velocity_limit": null
+    },
+    {
+      "control_lower": -23.7,
+      "control_upper": 23.7,
+      "effort_limit": 23.7,
+      "joint": "FR_hip_joint",
+      "name": "FR_hip",
+      "velocity_limit": null
+    },
+    {
+      "control_lower": -23.7,
+      "control_upper": 23.7,
+      "effort_limit": 23.7,
+      "joint": "FR_thigh_joint",
+      "name": "FR_thigh",
+      "velocity_limit": null
+    },
+    {
+      "control_lower": -45.43,
+      "control_upper": 45.43,
+      "effort_limit": 45.43,
+      "joint": "FR_calf_joint",
+      "name": "FR_calf",
+      "velocity_limit": null
+    },
+    {
+      "control_lower": -23.7,
+      "control_upper": 23.7,
+      "effort_limit": 23.7,
+      "joint": "RL_hip_joint",
+      "name": "RL_hip",
+      "velocity_limit": null
+    },
+    {
+      "control_lower": -23.7,
+      "control_upper": 23.7,
+      "effort_limit": 23.7,
+      "joint": "RL_thigh_joint",
+      "name": "RL_thigh",
+      "velocity_limit": null
+    },
+    {
+      "control_lower": -45.43,
+      "control_upper": 45.43,
+      "effort_limit": 45.43,
+      "joint": "RL_calf_joint",
+      "name": "RL_calf",
+      "velocity_limit": null
+    },
+    {
+      "control_lower": -23.7,
+      "control_upper": 23.7,
+      "effort_limit": 23.7,
+      "joint": "RR_hip_joint",
+      "name": "RR_hip",
+      "velocity_limit": null
+    },
+    {
+      "control_lower": -23.7,
+      "control_upper": 23.7,
+      "effort_limit": 23.7,
+      "joint": "RR_thigh_joint",
+      "name": "RR_thigh",
+      "velocity_limit": null
+    },
+    {
+      "control_lower": -45.43,
+      "control_upper": 45.43,
+      "effort_limit": 45.43,
+      "joint": "RR_calf_joint",
+      "name": "RR_calf",
+      "velocity_limit": null
+    }
+  ],
+  "base_link": "base",
+  "body_size_m": [
+    0.3762,
+    0.0935,
+    0.114
+  ],
+  "center_of_mass_m": [
+    0.008875231579844496,
+    4.456189507761729e-20,
+    -0.02134820722526976
+  ],
+  "collision_bounds_m": {
+    "maximum": [
+      0.1881,
+      0.04675,
+      0.057
+    ],
+    "minimum": [
+      -0.1881,
+      -0.04675,
+      -0.057
+    ]
+  },
+  "control_frequency_hz": 50.0,
+  "controller_joint_order": [
+    "FL_hip_joint",
+    "FL_thigh_joint",
+    "FL_calf_joint",
+    "FR_hip_joint",
+    "FR_thigh_joint",
+    "FR_calf_joint",
+    "RL_hip_joint",
+    "RL_thigh_joint",
+    "RL_calf_joint",
+    "RR_hip_joint",
+    "RR_thigh_joint",
+    "RR_calf_joint"
+  ],
+  "default_joint_positions": {
+    "FL_calf_joint": -1.5,
+    "FL_hip_joint": 0.1,
+    "FL_thigh_joint": 0.8,
+    "FR_calf_joint": -1.5,
+    "FR_hip_joint": -0.1,
+    "FR_thigh_joint": 0.8,
+    "RL_calf_joint": -1.5,
+    "RL_hip_joint": 0.1,
+    "RL_thigh_joint": 1.0,
+    "RR_calf_joint": -1.5,
+    "RR_hip_joint": -0.1,
+    "RR_thigh_joint": 1.0
+  },
+  "foot_links": [
+    "FL_calf",
+    "FR_calf",
+    "RL_calf",
+    "RR_calf"
+  ],
+  "foot_size_m": [
+    0.044,
+    0.044,
+    0.044
+  ],
+  "inference_confidence": {
+    "body_size": 0.7,
+    "kinematics": 0.5,
+    "mass": 0.9
+  },
+  "joints": [
+    {
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "child": "FL_hip",
+      "effort": null,
+      "joint_type": "hinge",
+      "lower": -1.0472,
+      "name": "FL_hip_joint",
+      "origin_xyz": [
+        0.1934,
+        0.0465,
+        0.0
+      ],
+      "parent": "base",
+      "upper": 1.0472,
+      "velocity": null
+    },
+    {
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "child": "FL_thigh",
+      "effort": null,
+      "joint_type": "hinge",
+      "lower": -1.5708,
+      "name": "FL_thigh_joint",
+      "origin_xyz": [
+        0.0,
+        0.0955,
+        0.0
+      ],
+      "parent": "FL_hip",
+      "upper": 3.4907,
+      "velocity": null
+    },
+    {
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "child": "FL_calf",
+      "effort": null,
+      "joint_type": "hinge",
+      "lower": -2.7227,
+      "name": "FL_calf_joint",
+      "origin_xyz": [
+        0.0,
+        0.0,
+        -0.213
+      ],
+      "parent": "FL_thigh",
+      "upper": -0.83776,
+      "velocity": null
+    },
+    {
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "child": "FR_hip",
+      "effort": null,
+      "joint_type": "hinge",
+      "lower": -1.0472,
+      "name": "FR_hip_joint",
+      "origin_xyz": [
+        0.1934,
+        -0.0465,
+        0.0
+      ],
+      "parent": "base",
+      "upper": 1.0472,
+      "velocity": null
+    },
+    {
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "child": "FR_thigh",
+      "effort": null,
+      "joint_type": "hinge",
+      "lower": -1.5708,
+      "name": "FR_thigh_joint",
+      "origin_xyz": [
+        0.0,
+        -0.0955,
+        0.0
+      ],
+      "parent": "FR_hip",
+      "upper": 3.4907,
+      "velocity": null
+    },
+    {
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "child": "FR_calf",
+      "effort": null,
+      "joint_type": "hinge",
+      "lower": -2.7227,
+      "name": "FR_calf_joint",
+      "origin_xyz": [
+        0.0,
+        0.0,
+        -0.213
+      ],
+      "parent": "FR_thigh",
+      "upper": -0.83776,
+      "velocity": null
+    },
+    {
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "child": "RL_hip",
+      "effort": null,
+      "joint_type": "hinge",
+      "lower": -1.0472,
+      "name": "RL_hip_joint",
+      "origin_xyz": [
+        -0.1934,
+        0.0465,
+        0.0
+      ],
+      "parent": "base",
+      "upper": 1.0472,
+      "velocity": null
+    },
+    {
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "child": "RL_thigh",
+      "effort": null,
+      "joint_type": "hinge",
+      "lower": -0.5236,
+      "name": "RL_thigh_joint",
+      "origin_xyz": [
+        0.0,
+        0.0955,
+        0.0
+      ],
+      "parent": "RL_hip",
+      "upper": 4.5379,
+      "velocity": null
+    },
+    {
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "child": "RL_calf",
+      "effort": null,
+      "joint_type": "hinge",
+      "lower": -2.7227,
+      "name": "RL_calf_joint",
+      "origin_xyz": [
+        0.0,
+        0.0,
+        -0.213
+      ],
+      "parent": "RL_thigh",
+      "upper": -0.83776,
+      "velocity": null
+    },
+    {
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "child": "RR_hip",
+      "effort": null,
+      "joint_type": "hinge",
+      "lower": -1.0472,
+      "name": "RR_hip_joint",
+      "origin_xyz": [
+        -0.1934,
+        -0.0465,
+        0.0
+      ],
+      "parent": "base",
+      "upper": 1.0472,
+      "velocity": null
+    },
+    {
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "child": "RR_thigh",
+      "effort": null,
+      "joint_type": "hinge",
+      "lower": -0.5236,
+      "name": "RR_thigh_joint",
+      "origin_xyz": [
+        0.0,
+        -0.0955,
+        0.0
+      ],
+      "parent": "RR_hip",
+      "upper": 4.5379,
+      "velocity": null
+    },
+    {
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "child": "RR_calf",
+      "effort": null,
+      "joint_type": "hinge",
+      "lower": -2.7227,
+      "name": "RR_calf_joint",
+      "origin_xyz": [
+        0.0,
+        0.0,
+        -0.213
+      ],
+      "parent": "RR_thigh",
+      "upper": -0.83776,
+      "velocity": null
+    }
+  ],
+  "limb_reach_m": 0.426,
+  "link_inertias": {
+    "FL_calf": {
+      "mass_kg": 0.241352,
+      "matrix_kg_m2": [
+        [
+          0.0014901,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.00146356,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          5.31397e-05
+        ]
+      ],
+      "origin_xyz_m": [
+        0.00629595,
+        -0.000622121,
+        -0.141417
+      ],
+      "quaternion_wxyz": [
+        0.710672,
+        0.00154099,
+        -0.00450087,
+        0.703508
+      ]
+    },
+    "FL_hip": {
+      "mass_kg": 0.678,
+      "matrix_kg_m2": [
+        [
+          0.00088403,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.000596003,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.000479967
+        ]
+      ],
+      "origin_xyz_m": [
+        -0.0054,
+        0.00194,
+        -0.000105
+      ],
+      "quaternion_wxyz": [
+        0.497014,
+        0.499245,
+        0.505462,
+        0.498237
+      ]
+    },
+    "FL_thigh": {
+      "mass_kg": 1.152,
+      "matrix_kg_m2": [
+        [
+          0.00594973,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.00584149,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.000878787
+        ]
+      ],
+      "origin_xyz_m": [
+        -0.00374,
+        -0.0223,
+        -0.0327
+      ],
+      "quaternion_wxyz": [
+        0.829533,
+        0.0847635,
+        -0.0200632,
+        0.551623
+      ]
+    },
+    "FR_calf": {
+      "mass_kg": 0.241352,
+      "matrix_kg_m2": [
+        [
+          0.0014901,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.00146356,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          5.31397e-05
+        ]
+      ],
+      "origin_xyz_m": [
+        0.00629595,
+        0.000622121,
+        -0.141417
+      ],
+      "quaternion_wxyz": [
+        0.703508,
+        -0.00450087,
+        0.00154099,
+        0.710672
+      ]
+    },
+    "FR_hip": {
+      "mass_kg": 0.678,
+      "matrix_kg_m2": [
+        [
+          0.00088403,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.000596003,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.000479967
+        ]
+      ],
+      "origin_xyz_m": [
+        -0.0054,
+        -0.00194,
+        -0.000105
+      ],
+      "quaternion_wxyz": [
+        0.498237,
+        0.505462,
+        0.499245,
+        0.497014
+      ]
+    },
+    "FR_thigh": {
+      "mass_kg": 1.152,
+      "matrix_kg_m2": [
+        [
+          0.00594973,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.00584149,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.000878787
+        ]
+      ],
+      "origin_xyz_m": [
+        -0.00374,
+        0.0223,
+        -0.0327
+      ],
+      "quaternion_wxyz": [
+        0.551623,
+        -0.0200632,
+        0.0847635,
+        0.829533
+      ]
+    },
+    "RL_calf": {
+      "mass_kg": 0.241352,
+      "matrix_kg_m2": [
+        [
+          0.0014901,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.00146356,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          5.31397e-05
+        ]
+      ],
+      "origin_xyz_m": [
+        0.00629595,
+        -0.000622121,
+        -0.141417
+      ],
+      "quaternion_wxyz": [
+        0.710672,
+        0.00154099,
+        -0.00450087,
+        0.703508
+      ]
+    },
+    "RL_hip": {
+      "mass_kg": 0.678,
+      "matrix_kg_m2": [
+        [
+          0.00088403,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.000596003,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.000479967
+        ]
+      ],
+      "origin_xyz_m": [
+        0.0054,
+        0.00194,
+        -0.000105
+      ],
+      "quaternion_wxyz": [
+        0.505462,
+        0.498237,
+        0.497014,
+        0.499245
+      ]
+    },
+    "RL_thigh": {
+      "mass_kg": 1.152,
+      "matrix_kg_m2": [
+        [
+          0.00594973,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.00584149,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.000878787
+        ]
+      ],
+      "origin_xyz_m": [
+        -0.00374,
+        -0.0223,
+        -0.0327
+      ],
+      "quaternion_wxyz": [
+        0.829533,
+        0.0847635,
+        -0.0200632,
+        0.551623
+      ]
+    },
+    "RR_calf": {
+      "mass_kg": 0.241352,
+      "matrix_kg_m2": [
+        [
+          0.0014901,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.00146356,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          5.31397e-05
+        ]
+      ],
+      "origin_xyz_m": [
+        0.00629595,
+        0.000622121,
+        -0.141417
+      ],
+      "quaternion_wxyz": [
+        0.703508,
+        -0.00450087,
+        0.00154099,
+        0.710672
+      ]
+    },
+    "RR_hip": {
+      "mass_kg": 0.678,
+      "matrix_kg_m2": [
+        [
+          0.00088403,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.000596003,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.000479967
+        ]
+      ],
+      "origin_xyz_m": [
+        0.0054,
+        -0.00194,
+        -0.000105
+      ],
+      "quaternion_wxyz": [
+        0.499245,
+        0.497014,
+        0.498237,
+        0.505462
+      ]
+    },
+    "RR_thigh": {
+      "mass_kg": 1.152,
+      "matrix_kg_m2": [
+        [
+          0.00594973,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.00584149,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.000878787
+        ]
+      ],
+      "origin_xyz_m": [
+        -0.00374,
+        0.0223,
+        -0.0327
+      ],
+      "quaternion_wxyz": [
+        0.551623,
+        -0.0200632,
+        0.0847635,
+        0.829533
+      ]
+    },
+    "base": {
+      "mass_kg": 6.921,
+      "matrix_kg_m2": [
+        [
+          0.107027,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0980771,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0244531
+        ]
+      ],
+      "origin_xyz_m": [
+        0.021112,
+        0.0,
+        -0.005366
+      ],
+      "quaternion_wxyz": [
+        -0.000543471,
+        0.713435,
+        -0.00173769,
+        0.700719
+      ]
+    }
+  },
+  "links": [
+    "base",
+    "FL_hip",
+    "FL_thigh",
+    "FL_calf",
+    "FR_hip",
+    "FR_thigh",
+    "FR_calf",
+    "RL_hip",
+    "RL_thigh",
+    "RL_calf",
+    "RR_hip",
+    "RR_thigh",
+    "RR_calf"
+  ],
+  "name": "unitree_go2_menagerie",
+  "provenance": {
+    "original_path": "assets/cache/mujoco_menagerie/unitree_go2/go2.xml"
+  },
+  "schema_version": "1.0",
+  "source_format": "mjcf",
+  "source_path": "assets/cache/mujoco_menagerie/unitree_go2/go2.xml",
+  "source_sha256": "50adb09a4365293e2acdaf2010ae35a82b0f09fea18ae51806fef91e310ed04a",
+  "stance_length_m": 0.376,
+  "stance_width_m": 0.27,
+  "standing_height_m": 0.27,
+  "total_mass_kg": 15.206408000000003,
+  "warnings": []
+}

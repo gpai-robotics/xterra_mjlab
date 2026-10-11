@@ -1,0 +1,2046 @@
+{
+  "actuators": [
+    {
+      "control_lower": null,
+      "control_upper": null,
+      "effort_limit": 23.7,
+      "joint": "FL_hip_joint",
+      "name": "FL_hip_joint",
+      "velocity_limit": 30.1
+    },
+    {
+      "control_lower": null,
+      "control_upper": null,
+      "effort_limit": 23.7,
+      "joint": "FL_thigh_joint",
+      "name": "FL_thigh_joint",
+      "velocity_limit": 30.1
+    },
+    {
+      "control_lower": null,
+      "control_upper": null,
+      "effort_limit": 45.43,
+      "joint": "FL_calf_joint",
+      "name": "FL_calf_joint",
+      "velocity_limit": 15.7
+    },
+    {
+      "control_lower": null,
+      "control_upper": null,
+      "effort_limit": 23.7,
+      "joint": "FR_hip_joint",
+      "name": "FR_hip_joint",
+      "velocity_limit": 30.1
+    },
+    {
+      "control_lower": null,
+      "control_upper": null,
+      "effort_limit": 23.7,
+      "joint": "FR_thigh_joint",
+      "name": "FR_thigh_joint",
+      "velocity_limit": 30.1
+    },
+    {
+      "control_lower": null,
+      "control_upper": null,
+      "effort_limit": 45.43,
+      "joint": "FR_calf_joint",
+      "name": "FR_calf_joint",
+      "velocity_limit": 15.7
+    },
+    {
+      "control_lower": null,
+      "control_upper": null,
+      "effort_limit": 23.7,
+      "joint": "RL_hip_joint",
+      "name": "RL_hip_joint",
+      "velocity_limit": 30.1
+    },
+    {
+      "control_lower": null,
+      "control_upper": null,
+      "effort_limit": 23.7,
+      "joint": "RL_thigh_joint",
+      "name": "RL_thigh_joint",
+      "velocity_limit": 30.1
+    },
+    {
+      "control_lower": null,
+      "control_upper": null,
+      "effort_limit": 45.43,
+      "joint": "RL_calf_joint",
+      "name": "RL_calf_joint",
+      "velocity_limit": 15.7
+    },
+    {
+      "control_lower": null,
+      "control_upper": null,
+      "effort_limit": 23.7,
+      "joint": "RR_hip_joint",
+      "name": "RR_hip_joint",
+      "velocity_limit": 30.1
+    },
+    {
+      "control_lower": null,
+      "control_upper": null,
+      "effort_limit": 23.7,
+      "joint": "RR_thigh_joint",
+      "name": "RR_thigh_joint",
+      "velocity_limit": 30.1
+    },
+    {
+      "control_lower": null,
+      "control_upper": null,
+      "effort_limit": 45.43,
+      "joint": "RR_calf_joint",
+      "name": "RR_calf_joint",
+      "velocity_limit": 15.7
+    }
+  ],
+  "base_link": "base",
+  "body_size_m": [
+    0.3762,
+    0.0935,
+    0.114
+  ],
+  "center_of_mass_m": [
+    0.008221415552930936,
+    -3.2013180327631913e-19,
+    -0.016096503139180703
+  ],
+  "collision_bounds_m": {
+    "maximum": [
+      0.1881,
+      0.04675,
+      0.057
+    ],
+    "minimum": [
+      -0.1881,
+      -0.04675,
+      -0.057
+    ]
+  },
+  "control_frequency_hz": 50.0,
+  "controller_joint_order": [
+    "FL_hip_joint",
+    "FL_thigh_joint",
+    "FL_calf_joint",
+    "FR_hip_joint",
+    "FR_thigh_joint",
+    "FR_calf_joint",
+    "RL_hip_joint",
+    "RL_thigh_joint",
+    "RL_calf_joint",
+    "RR_hip_joint",
+    "RR_thigh_joint",
+    "RR_calf_joint"
+  ],
+  "default_joint_positions": {
+    "FL_calf_joint": -1.5,
+    "FL_hip_joint": 0.1,
+    "FL_thigh_joint": 0.8,
+    "FR_calf_joint": -1.5,
+    "FR_hip_joint": -0.1,
+    "FR_thigh_joint": 0.8,
+    "RL_calf_joint": -1.5,
+    "RL_hip_joint": 0.1,
+    "RL_thigh_joint": 1.0,
+    "RR_calf_joint": -1.5,
+    "RR_hip_joint": -0.1,
+    "RR_thigh_joint": 1.0
+  },
+  "foot_links": [
+    "FL_foot",
+    "FR_foot",
+    "RL_foot",
+    "RR_foot"
+  ],
+  "foot_size_m": [
+    0.044,
+    0.044,
+    0.044
+  ],
+  "inference_confidence": {
+    "body_size": 0.9,
+    "kinematics": 0.7,
+    "mass": 0.9
+  },
+  "joints": [
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "child": "Head_upper",
+      "effort": null,
+      "joint_type": "fixed",
+      "lower": null,
+      "name": "Head_upper_joint",
+      "origin_xyz": [
+        0.285,
+        0.0,
+        0.01
+      ],
+      "parent": "base",
+      "upper": null,
+      "velocity": null
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "child": "Head_lower",
+      "effort": null,
+      "joint_type": "fixed",
+      "lower": null,
+      "name": "Head_lower_joint",
+      "origin_xyz": [
+        0.008,
+        0.0,
+        -0.07
+      ],
+      "parent": "Head_upper",
+      "upper": null,
+      "velocity": null
+    },
+    {
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "child": "FL_hip",
+      "effort": 23.7,
+      "joint_type": "revolute",
+      "lower": -1.0472,
+      "name": "FL_hip_joint",
+      "origin_xyz": [
+        0.1934,
+        0.0465,
+        0.0
+      ],
+      "parent": "base",
+      "upper": 1.0472,
+      "velocity": 30.1
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "child": "FL_hip_rotor",
+      "effort": null,
+      "joint_type": "fixed",
+      "lower": null,
+      "name": "FL_hip_rotor_joint",
+      "origin_xyz": [
+        0.11215,
+        0.04675,
+        0.0
+      ],
+      "parent": "base",
+      "upper": null,
+      "velocity": null
+    },
+    {
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "child": "FL_thigh",
+      "effort": 23.7,
+      "joint_type": "revolute",
+      "lower": -1.5708,
+      "name": "FL_thigh_joint",
+      "origin_xyz": [
+        0.0,
+        0.0955,
+        0.0
+      ],
+      "parent": "FL_hip",
+      "upper": 3.4907,
+      "velocity": 30.1
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "child": "FL_thigh_rotor",
+      "effort": null,
+      "joint_type": "fixed",
+      "lower": null,
+      "name": "FL_thigh_rotor_joint",
+      "origin_xyz": [
+        0.0,
+        -0.00015,
+        0.0
+      ],
+      "parent": "FL_hip",
+      "upper": null,
+      "velocity": null
+    },
+    {
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "child": "FL_calf",
+      "effort": 45.43,
+      "joint_type": "revolute",
+      "lower": -2.7227,
+      "name": "FL_calf_joint",
+      "origin_xyz": [
+        0.0,
+        0.0,
+        -0.213
+      ],
+      "parent": "FL_thigh",
+      "upper": -0.83776,
+      "velocity": 15.7
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "child": "FL_calflower",
+      "effort": null,
+      "joint_type": "fixed",
+      "lower": null,
+      "name": "FL_calflower_joint",
+      "origin_xyz": [
+        0.02,
+        0.0,
+        -0.148
+      ],
+      "parent": "FL_calf",
+      "upper": null,
+      "velocity": null
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "child": "FL_calflower1",
+      "effort": null,
+      "joint_type": "fixed",
+      "lower": null,
+      "name": "FL_calflower1_joint",
+      "origin_xyz": [
+        -0.01,
+        0.0,
+        -0.04
+      ],
+      "parent": "FL_calflower",
+      "upper": null,
+      "velocity": null
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "child": "FL_calf_rotor",
+      "effort": null,
+      "joint_type": "fixed",
+      "lower": null,
+      "name": "FL_calf_rotor_joint",
+      "origin_xyz": [
+        0.0,
+        -0.03235,
+        0.0
+      ],
+      "parent": "FL_thigh",
+      "upper": null,
+      "velocity": null
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "child": "FL_foot",
+      "effort": null,
+      "joint_type": "fixed",
+      "lower": null,
+      "name": "FL_foot_joint",
+      "origin_xyz": [
+        0.0,
+        0.0,
+        -0.213
+      ],
+      "parent": "FL_calf",
+      "upper": null,
+      "velocity": null
+    },
+    {
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "child": "FR_hip",
+      "effort": 23.7,
+      "joint_type": "revolute",
+      "lower": -1.0472,
+      "name": "FR_hip_joint",
+      "origin_xyz": [
+        0.1934,
+        -0.0465,
+        0.0
+      ],
+      "parent": "base",
+      "upper": 1.0472,
+      "velocity": 30.1
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "child": "FR_hip_rotor",
+      "effort": null,
+      "joint_type": "fixed",
+      "lower": null,
+      "name": "FR_hip_rotor_joint",
+      "origin_xyz": [
+        0.11215,
+        -0.04675,
+        0.0
+      ],
+      "parent": "base",
+      "upper": null,
+      "velocity": null
+    },
+    {
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "child": "FR_thigh",
+      "effort": 23.7,
+      "joint_type": "revolute",
+      "lower": -1.5708,
+      "name": "FR_thigh_joint",
+      "origin_xyz": [
+        0.0,
+        -0.0955,
+        0.0
+      ],
+      "parent": "FR_hip",
+      "upper": 3.4907,
+      "velocity": 30.1
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "child": "FR_thigh_rotor",
+      "effort": null,
+      "joint_type": "fixed",
+      "lower": null,
+      "name": "FR_thigh_rotor_joint",
+      "origin_xyz": [
+        0.0,
+        0.00015,
+        0.0
+      ],
+      "parent": "FR_hip",
+      "upper": null,
+      "velocity": null
+    },
+    {
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "child": "FR_calf",
+      "effort": 45.43,
+      "joint_type": "revolute",
+      "lower": -2.7227,
+      "name": "FR_calf_joint",
+      "origin_xyz": [
+        0.0,
+        0.0,
+        -0.213
+      ],
+      "parent": "FR_thigh",
+      "upper": -0.83776,
+      "velocity": 15.7
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "child": "FR_calflower",
+      "effort": null,
+      "joint_type": "fixed",
+      "lower": null,
+      "name": "FR_calflower_joint",
+      "origin_xyz": [
+        0.02,
+        0.0,
+        -0.148
+      ],
+      "parent": "FR_calf",
+      "upper": null,
+      "velocity": null
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "child": "FR_calflower1",
+      "effort": null,
+      "joint_type": "fixed",
+      "lower": null,
+      "name": "FR_calflower1_joint",
+      "origin_xyz": [
+        -0.01,
+        0.0,
+        -0.04
+      ],
+      "parent": "FR_calflower",
+      "upper": null,
+      "velocity": null
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "child": "FR_calf_rotor",
+      "effort": null,
+      "joint_type": "fixed",
+      "lower": null,
+      "name": "FR_calf_rotor_joint",
+      "origin_xyz": [
+        0.0,
+        0.03235,
+        0.0
+      ],
+      "parent": "FR_thigh",
+      "upper": null,
+      "velocity": null
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "child": "FR_foot",
+      "effort": null,
+      "joint_type": "fixed",
+      "lower": null,
+      "name": "FR_foot_joint",
+      "origin_xyz": [
+        0.0,
+        0.0,
+        -0.213
+      ],
+      "parent": "FR_calf",
+      "upper": null,
+      "velocity": null
+    },
+    {
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "child": "RL_hip",
+      "effort": 23.7,
+      "joint_type": "revolute",
+      "lower": -1.0472,
+      "name": "RL_hip_joint",
+      "origin_xyz": [
+        -0.1934,
+        0.0465,
+        0.0
+      ],
+      "parent": "base",
+      "upper": 1.0472,
+      "velocity": 30.1
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "child": "RL_hip_rotor",
+      "effort": null,
+      "joint_type": "fixed",
+      "lower": null,
+      "name": "RL_hip_rotor_joint",
+      "origin_xyz": [
+        -0.11215,
+        0.04675,
+        0.0
+      ],
+      "parent": "base",
+      "upper": null,
+      "velocity": null
+    },
+    {
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "child": "RL_thigh",
+      "effort": 23.7,
+      "joint_type": "revolute",
+      "lower": -0.5236,
+      "name": "RL_thigh_joint",
+      "origin_xyz": [
+        0.0,
+        0.0955,
+        0.0
+      ],
+      "parent": "RL_hip",
+      "upper": 4.5379,
+      "velocity": 30.1
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "child": "RL_thigh_rotor",
+      "effort": null,
+      "joint_type": "fixed",
+      "lower": null,
+      "name": "RL_thigh_rotor_joint",
+      "origin_xyz": [
+        0.0,
+        -0.00015,
+        0.0
+      ],
+      "parent": "RL_hip",
+      "upper": null,
+      "velocity": null
+    },
+    {
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "child": "RL_calf",
+      "effort": 45.43,
+      "joint_type": "revolute",
+      "lower": -2.7227,
+      "name": "RL_calf_joint",
+      "origin_xyz": [
+        0.0,
+        0.0,
+        -0.213
+      ],
+      "parent": "RL_thigh",
+      "upper": -0.83776,
+      "velocity": 15.7
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "child": "RL_calflower",
+      "effort": null,
+      "joint_type": "fixed",
+      "lower": null,
+      "name": "RL_calflower_joint",
+      "origin_xyz": [
+        0.02,
+        0.0,
+        -0.148
+      ],
+      "parent": "RL_calf",
+      "upper": null,
+      "velocity": null
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "child": "RL_calflower1",
+      "effort": null,
+      "joint_type": "fixed",
+      "lower": null,
+      "name": "RL_calflower1_joint",
+      "origin_xyz": [
+        -0.01,
+        0.0,
+        -0.04
+      ],
+      "parent": "RL_calflower",
+      "upper": null,
+      "velocity": null
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "child": "RL_calf_rotor",
+      "effort": null,
+      "joint_type": "fixed",
+      "lower": null,
+      "name": "RL_calf_rotor_joint",
+      "origin_xyz": [
+        0.0,
+        -0.03235,
+        0.0
+      ],
+      "parent": "RL_thigh",
+      "upper": null,
+      "velocity": null
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "child": "RL_foot",
+      "effort": null,
+      "joint_type": "fixed",
+      "lower": null,
+      "name": "RL_foot_joint",
+      "origin_xyz": [
+        0.0,
+        0.0,
+        -0.213
+      ],
+      "parent": "RL_calf",
+      "upper": null,
+      "velocity": null
+    },
+    {
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "child": "RR_hip",
+      "effort": 23.7,
+      "joint_type": "revolute",
+      "lower": -1.0472,
+      "name": "RR_hip_joint",
+      "origin_xyz": [
+        -0.1934,
+        -0.0465,
+        0.0
+      ],
+      "parent": "base",
+      "upper": 1.0472,
+      "velocity": 30.1
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "child": "RR_hip_rotor",
+      "effort": null,
+      "joint_type": "fixed",
+      "lower": null,
+      "name": "RR_hip_rotor_joint",
+      "origin_xyz": [
+        -0.11215,
+        -0.04675,
+        0.0
+      ],
+      "parent": "base",
+      "upper": null,
+      "velocity": null
+    },
+    {
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "child": "RR_thigh",
+      "effort": 23.7,
+      "joint_type": "revolute",
+      "lower": -0.5236,
+      "name": "RR_thigh_joint",
+      "origin_xyz": [
+        0.0,
+        -0.0955,
+        0.0
+      ],
+      "parent": "RR_hip",
+      "upper": 4.5379,
+      "velocity": 30.1
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "child": "RR_thigh_rotor",
+      "effort": null,
+      "joint_type": "fixed",
+      "lower": null,
+      "name": "RR_thigh_rotor_joint",
+      "origin_xyz": [
+        0.0,
+        0.00015,
+        0.0
+      ],
+      "parent": "RR_hip",
+      "upper": null,
+      "velocity": null
+    },
+    {
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "child": "RR_calf",
+      "effort": 45.43,
+      "joint_type": "revolute",
+      "lower": -2.7227,
+      "name": "RR_calf_joint",
+      "origin_xyz": [
+        0.0,
+        0.0,
+        -0.213
+      ],
+      "parent": "RR_thigh",
+      "upper": -0.83776,
+      "velocity": 15.7
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "child": "RR_calflower",
+      "effort": null,
+      "joint_type": "fixed",
+      "lower": null,
+      "name": "RR_calflower_joint",
+      "origin_xyz": [
+        0.02,
+        0.0,
+        -0.148
+      ],
+      "parent": "RR_calf",
+      "upper": null,
+      "velocity": null
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "child": "RR_calflower1",
+      "effort": null,
+      "joint_type": "fixed",
+      "lower": null,
+      "name": "RR_calflower1_joint",
+      "origin_xyz": [
+        -0.01,
+        0.0,
+        -0.04
+      ],
+      "parent": "RR_calflower",
+      "upper": null,
+      "velocity": null
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "child": "RR_calf_rotor",
+      "effort": null,
+      "joint_type": "fixed",
+      "lower": null,
+      "name": "RR_calf_rotor_joint",
+      "origin_xyz": [
+        0.0,
+        0.03235,
+        0.0
+      ],
+      "parent": "RR_thigh",
+      "upper": null,
+      "velocity": null
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "child": "RR_foot",
+      "effort": null,
+      "joint_type": "fixed",
+      "lower": null,
+      "name": "RR_foot_joint",
+      "origin_xyz": [
+        0.0,
+        0.0,
+        -0.213
+      ],
+      "parent": "RR_calf",
+      "upper": null,
+      "velocity": null
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "child": "imu",
+      "effort": null,
+      "joint_type": "fixed",
+      "lower": null,
+      "name": "imu_joint",
+      "origin_xyz": [
+        -0.02557,
+        0.0,
+        0.04232
+      ],
+      "parent": "base",
+      "upper": null,
+      "velocity": null
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "child": "radar",
+      "effort": null,
+      "joint_type": "fixed",
+      "lower": null,
+      "name": "radar_joint",
+      "origin_xyz": [
+        0.28945,
+        0.0,
+        -0.046825
+      ],
+      "parent": "base",
+      "upper": null,
+      "velocity": null
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "child": "front_camera",
+      "effort": null,
+      "joint_type": "fixed",
+      "lower": null,
+      "name": "front_camera_joint",
+      "origin_xyz": [
+        0.32715,
+        -3e-05,
+        0.04297
+      ],
+      "parent": "base",
+      "upper": null,
+      "velocity": null
+    }
+  ],
+  "limb_reach_m": 0.426,
+  "link_inertias": {
+    "FL_calf": {
+      "mass_kg": 0.154,
+      "matrix_kg_m2": [
+        [
+          0.00108,
+          3.4e-07,
+          1.72e-05
+        ],
+        [
+          3.4e-07,
+          0.0011,
+          8.28e-06
+        ],
+        [
+          1.72e-05,
+          8.28e-06,
+          3.29e-05
+        ]
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz_m": [
+        0.00548,
+        -0.000975,
+        -0.115
+      ]
+    },
+    "FL_calf_rotor": {
+      "mass_kg": 0.089,
+      "matrix_kg_m2": [
+        [
+          5.9647e-05,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.000111842,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          5.9647e-05
+        ]
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "FL_foot": {
+      "mass_kg": 0.04,
+      "matrix_kg_m2": [
+        [
+          9.6e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          9.6e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          9.6e-06
+        ]
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "FL_hip": {
+      "mass_kg": 0.678,
+      "matrix_kg_m2": [
+        [
+          0.00048,
+          -3.01e-06,
+          1.11e-06
+        ],
+        [
+          -3.01e-06,
+          0.000884,
+          -1.42e-06
+        ],
+        [
+          1.11e-06,
+          -1.42e-06,
+          0.000596
+        ]
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz_m": [
+        -0.0054,
+        0.00194,
+        -0.000105
+      ]
+    },
+    "FL_hip_rotor": {
+      "mass_kg": 0.089,
+      "matrix_kg_m2": [
+        [
+          0.000111842,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          5.9647e-05,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          5.9647e-05
+        ]
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "FL_thigh": {
+      "mass_kg": 1.152,
+      "matrix_kg_m2": [
+        [
+          0.00584,
+          8.72e-05,
+          -0.000289
+        ],
+        [
+          8.72e-05,
+          0.0058,
+          0.000808
+        ],
+        [
+          -0.000289,
+          0.000808,
+          0.00103
+        ]
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz_m": [
+        -0.00374,
+        -0.0223,
+        -0.0327
+      ]
+    },
+    "FL_thigh_rotor": {
+      "mass_kg": 0.089,
+      "matrix_kg_m2": [
+        [
+          5.9647e-05,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.000111842,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          5.9647e-05
+        ]
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "FR_calf": {
+      "mass_kg": 0.154,
+      "matrix_kg_m2": [
+        [
+          0.00108,
+          -3.4e-07,
+          1.72e-05
+        ],
+        [
+          -3.4e-07,
+          0.0011,
+          -8.28e-06
+        ],
+        [
+          1.72e-05,
+          -8.28e-06,
+          3.29e-05
+        ]
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz_m": [
+        0.00548,
+        0.000975,
+        -0.115
+      ]
+    },
+    "FR_calf_rotor": {
+      "mass_kg": 0.089,
+      "matrix_kg_m2": [
+        [
+          5.9647e-05,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.000111842,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          5.9647e-05
+        ]
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "FR_foot": {
+      "mass_kg": 0.04,
+      "matrix_kg_m2": [
+        [
+          9.6e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          9.6e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          9.6e-06
+        ]
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "FR_hip": {
+      "mass_kg": 0.678,
+      "matrix_kg_m2": [
+        [
+          0.00048,
+          3.01e-06,
+          1.11e-06
+        ],
+        [
+          3.01e-06,
+          0.000884,
+          1.42e-06
+        ],
+        [
+          1.11e-06,
+          1.42e-06,
+          0.000596
+        ]
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz_m": [
+        -0.0054,
+        -0.00194,
+        -0.000105
+      ]
+    },
+    "FR_hip_rotor": {
+      "mass_kg": 0.089,
+      "matrix_kg_m2": [
+        [
+          0.000111842,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          5.9647e-05,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          5.9647e-05
+        ]
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "FR_thigh": {
+      "mass_kg": 1.152,
+      "matrix_kg_m2": [
+        [
+          0.00584,
+          -8.72e-05,
+          -0.000289
+        ],
+        [
+          -8.72e-05,
+          0.0058,
+          -0.000808
+        ],
+        [
+          -0.000289,
+          -0.000808,
+          0.00103
+        ]
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz_m": [
+        -0.00374,
+        0.0223,
+        -0.0327
+      ]
+    },
+    "FR_thigh_rotor": {
+      "mass_kg": 0.089,
+      "matrix_kg_m2": [
+        [
+          5.9647e-05,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.000111842,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          5.9647e-05
+        ]
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "Head_lower": {
+      "mass_kg": 0.001,
+      "matrix_kg_m2": [
+        [
+          9.6e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          9.6e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          9.6e-06
+        ]
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "Head_upper": {
+      "mass_kg": 0.001,
+      "matrix_kg_m2": [
+        [
+          9.6e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          9.6e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          9.6e-06
+        ]
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "RL_calf": {
+      "mass_kg": 0.154,
+      "matrix_kg_m2": [
+        [
+          0.00108,
+          3.4e-07,
+          1.72e-05
+        ],
+        [
+          3.4e-07,
+          0.0011,
+          8.28e-06
+        ],
+        [
+          1.72e-05,
+          8.28e-06,
+          3.29e-05
+        ]
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz_m": [
+        0.00548,
+        -0.000975,
+        -0.115
+      ]
+    },
+    "RL_calf_rotor": {
+      "mass_kg": 0.089,
+      "matrix_kg_m2": [
+        [
+          5.9647e-05,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.000111842,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          5.9647e-05
+        ]
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "RL_foot": {
+      "mass_kg": 0.04,
+      "matrix_kg_m2": [
+        [
+          9.6e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          9.6e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          9.6e-06
+        ]
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "RL_hip": {
+      "mass_kg": 0.678,
+      "matrix_kg_m2": [
+        [
+          0.00048,
+          3.01e-06,
+          -1.11e-06
+        ],
+        [
+          3.01e-06,
+          0.000884,
+          -1.42e-06
+        ],
+        [
+          -1.11e-06,
+          -1.42e-06,
+          0.000596
+        ]
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz_m": [
+        0.0054,
+        0.00194,
+        -0.000105
+      ]
+    },
+    "RL_hip_rotor": {
+      "mass_kg": 0.089,
+      "matrix_kg_m2": [
+        [
+          0.000111842,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          5.9647e-05,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          5.9647e-05
+        ]
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "RL_thigh": {
+      "mass_kg": 1.152,
+      "matrix_kg_m2": [
+        [
+          0.00584,
+          8.72e-05,
+          -0.000289
+        ],
+        [
+          8.72e-05,
+          0.0058,
+          0.000808
+        ],
+        [
+          -0.000289,
+          0.000808,
+          0.00103
+        ]
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz_m": [
+        -0.00374,
+        -0.0223,
+        -0.0327
+      ]
+    },
+    "RL_thigh_rotor": {
+      "mass_kg": 0.089,
+      "matrix_kg_m2": [
+        [
+          5.9647e-05,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.000111842,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          5.9647e-05
+        ]
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "RR_calf": {
+      "mass_kg": 0.154,
+      "matrix_kg_m2": [
+        [
+          0.00108,
+          -3.4e-07,
+          1.72e-05
+        ],
+        [
+          -3.4e-07,
+          0.0011,
+          -8.28e-06
+        ],
+        [
+          1.72e-05,
+          -8.28e-06,
+          3.29e-05
+        ]
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz_m": [
+        0.00548,
+        0.000975,
+        -0.115
+      ]
+    },
+    "RR_calf_rotor": {
+      "mass_kg": 0.089,
+      "matrix_kg_m2": [
+        [
+          5.9647e-05,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.000111842,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          5.9647e-05
+        ]
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "RR_foot": {
+      "mass_kg": 0.04,
+      "matrix_kg_m2": [
+        [
+          9.6e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          9.6e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          9.6e-06
+        ]
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "RR_hip": {
+      "mass_kg": 0.678,
+      "matrix_kg_m2": [
+        [
+          0.00048,
+          -3.01e-06,
+          -1.11e-06
+        ],
+        [
+          -3.01e-06,
+          0.000884,
+          1.42e-06
+        ],
+        [
+          -1.11e-06,
+          1.42e-06,
+          0.000596
+        ]
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz_m": [
+        0.0054,
+        -0.00194,
+        -0.000105
+      ]
+    },
+    "RR_hip_rotor": {
+      "mass_kg": 0.089,
+      "matrix_kg_m2": [
+        [
+          0.000111842,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          5.9647e-05,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          5.9647e-05
+        ]
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "RR_thigh": {
+      "mass_kg": 1.152,
+      "matrix_kg_m2": [
+        [
+          0.00584,
+          -8.72e-05,
+          -0.000289
+        ],
+        [
+          -8.72e-05,
+          0.0058,
+          -0.000808
+        ],
+        [
+          -0.000289,
+          -0.000808,
+          0.00103
+        ]
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz_m": [
+        -0.00374,
+        0.0223,
+        -0.0327
+      ]
+    },
+    "RR_thigh_rotor": {
+      "mass_kg": 0.089,
+      "matrix_kg_m2": [
+        [
+          5.9647e-05,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.000111842,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          5.9647e-05
+        ]
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "base": {
+      "mass_kg": 6.921,
+      "matrix_kg_m2": [
+        [
+          0.02448,
+          0.00012166,
+          0.0014849
+        ],
+        [
+          0.00012166,
+          0.098077,
+          -3.12e-05
+        ],
+        [
+          0.0014849,
+          -3.12e-05,
+          0.107
+        ]
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz_m": [
+        0.021112,
+        0.0,
+        -0.005366
+      ]
+    },
+    "imu": {
+      "mass_kg": 0.0,
+      "matrix_kg_m2": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "radar": {
+      "mass_kg": 0.0,
+      "matrix_kg_m2": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "links": [
+    "base",
+    "Head_upper",
+    "Head_lower",
+    "FL_hip",
+    "FL_hip_rotor",
+    "FL_thigh",
+    "FL_thigh_rotor",
+    "FL_calf",
+    "FL_calflower",
+    "FL_calflower1",
+    "FL_calf_rotor",
+    "FL_foot",
+    "FR_hip",
+    "FR_hip_rotor",
+    "FR_thigh",
+    "FR_thigh_rotor",
+    "FR_calf",
+    "FR_calflower",
+    "FR_calflower1",
+    "FR_calf_rotor",
+    "FR_foot",
+    "RL_hip",
+    "RL_hip_rotor",
+    "RL_thigh",
+    "RL_thigh_rotor",
+    "RL_calf",
+    "RL_calflower",
+    "RL_calflower1",
+    "RL_calf_rotor",
+    "RL_foot",
+    "RR_hip",
+    "RR_hip_rotor",
+    "RR_thigh",
+    "RR_thigh_rotor",
+    "RR_calf",
+    "RR_calflower",
+    "RR_calflower1",
+    "RR_calf_rotor",
+    "RR_foot",
+    "imu",
+    "radar",
+    "front_camera"
+  ],
+  "name": "unitree_go2",
+  "provenance": {
+    "original_path": "assets/cache/unitree_ros/robots/go2_description/urdf/go2_description.urdf",
+    "package_paths": [
+      "assets/cache/unitree_ros/robots/go2_description/urdf",
+      "assets/cache/unitree_ros/robots/go2_description"
+    ]
+  },
+  "schema_version": "1.0",
+  "source_format": "urdf",
+  "source_path": "assets/cache/unitree_ros/robots/go2_description/urdf/go2_description.urdf",
+  "source_sha256": "7d19fe48e2e689ee1a032ab99f2a4a8b671d87e73de48d3e65811682a5b48b9e",
+  "stance_length_m": 0.376,
+  "stance_width_m": 0.27,
+  "standing_height_m": 0.4,
+  "total_mass_kg": 16.087,
+  "warnings": [
+    "reported COM combines link-local inertial origins; use a nominal-pose dynamics engine for whole-body COM"
+  ]
+}

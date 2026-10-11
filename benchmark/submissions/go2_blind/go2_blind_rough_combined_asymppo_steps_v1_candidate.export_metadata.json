@@ -1,0 +1,38 @@
+{
+  "phase": "combined-asymppo-stairs-v1",
+  "policy_name": "go2_blind_rough_combined_asymppo_steps_v1_candidate",
+  "runtime_contract": {
+    "deployable_observation_groups": [
+      "policy",
+      "policy_history"
+    ],
+    "latent_update_semantics": "",
+    "policy_kind": "blind_history_policy"
+  },
+  "source_checkpoint": "logs/rsl_rl/go2_blind_rough_combined_asymppo_steps_v1/2026-07-16_10-14-29/model_5099.pt",
+  "task": "Go2-Blind-Rough-MJLAB-Combined-AsymPPO-Steps-V1",
+  "tensor_contract": {
+    "action_dim": 12,
+    "forward_signature": {
+      "inputs": {
+        "policy_history": [
+          "batch",
+          4500
+        ],
+        "policy_obs": [
+          "batch",
+          45
+        ]
+      },
+      "outputs": {
+        "action": [
+          "batch",
+          12
+        ]
+      }
+    },
+    "latent_dim": 0,
+    "policy_history_dim": 4500,
+    "policy_obs_dim": 45
+  }
+}

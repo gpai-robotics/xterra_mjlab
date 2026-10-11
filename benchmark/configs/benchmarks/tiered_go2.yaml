@@ -1,0 +1,40 @@
+schema_version: "2.0"
+benchmark_id: go2-tiered-robustness
+seed_base: 23000
+dt_s: 0.005
+control_decimation: 4
+timeout_s: 30.0
+
+profiles:
+  smoke:
+    levels: [L0, L1, L2, L3]
+    repetitions: 1
+    controller_seeds: [null]
+  quick:
+    levels: [L0, L1, L2, L3]
+    repetitions: 10
+    controller_seeds: [null]
+  standard:
+    levels: [L0, L1, L2, L3, L4, L5, L6, L7]
+    repetitions: 30
+    controller_seeds: [null]
+  exhaustive:
+    levels: [L0, L1, L2, L3, L4, L5, L6, L7]
+    repetitions: 30
+    controller_seeds: [null]
+    locked: true
+
+stressor_bounds:
+  friction_scale: [0.6, 1.1]
+  payload_fraction: [0.0, 0.3]
+  action_latency_s: [0.0, 0.06]
+  push_impulse_ns: [0.0, 20.0]
+sobol_samples: 8
+
+backend_gates:
+  conformance_required_for_cross_engine: true
+  calibration_required_for_cross_engine: true
+  walking_controller_required_for_capability_claims: true
+  unavailable_gpu_behavior: structured_skip
+  rs11_fidelity_must_be_reported: true
+

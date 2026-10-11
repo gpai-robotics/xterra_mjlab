@@ -1,0 +1,23 @@
+name: unitree_go2_menagerie
+base_link: base
+foot_links: [FL_calf, FR_calf, RL_calf, RR_calf]
+body_size_m: [0.3762, 0.0935, 0.114]
+standing_height_m: 0.27
+stance_length_m: 0.376
+stance_width_m: 0.27
+foot_size_m: [0.044, 0.044, 0.044]
+limb_reach_m: 0.426
+control_frequency_hz: 50.0
+default_joint_positions:
+  FL_hip_joint: 0.0
+  FL_thigh_joint: 0.9
+  FL_calf_joint: -1.8
+  FR_hip_joint: 0.0
+  FR_thigh_joint: 0.9
+  FR_calf_joint: -1.8
+  RL_hip_joint: 0.0
+  RL_thigh_joint: 0.9
+  RL_calf_joint: -1.8
+  RR_hip_joint: 0.0
+  RR_thigh_joint: 0.9
+  RR_calf_joint: -1.8

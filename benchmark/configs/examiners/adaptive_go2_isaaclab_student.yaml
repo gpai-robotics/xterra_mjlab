@@ -1,0 +1,27 @@
+schema_version: "1.0"
+examiner_id: go2-depth-student-isaaclab
+backend: isaaclab
+robot_profile: ../../assets/cache/go2_mjcf_profile.json
+# Placeholder asset for compatibility materialization only. Before a real run,
+# replace this with the exact USD used by the source policy and pass robot
+# conformance; the sensor gate currently blocks earlier on the missing depth
+# observation provider.
+robot_asset: ../../assets/cache/mujoco_menagerie/unitree_go2/go2.xml
+robot_format: mjcf
+skill: ../skills/go2_extreme_parkour_student_policy.yaml
+runtimes: ../runtimes.yaml
+output_dir: ../../runs/adaptive_examiner/go2_isaaclab_student
+terrain_codes: [rs1, rs2, rs3, rs4, rs5, rs6, rs7, rs8, rs9, rs10, rs11]
+seed: 1701
+timeout_s: 20
+adaptive:
+  screening_severities: [0.2, 0.5, 0.8]
+  minimum_severity: 0.0
+  maximum_severity: 1.0
+  boundary_tolerance: 0.05
+  exploration_repetitions: 1
+  confirmation_min_repetitions: 3
+  confirmation_max_repetitions: 12
+  target_success_probability: 0.7
+  pruning_audit_fraction: 0.1
+  interaction_count: 10

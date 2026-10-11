@@ -101,6 +101,24 @@ python scripts/play.py xTerra-Mjlab-Velocity-Flat-SvanM2 --agent zero
 |---------|-------------|
 | `xTerra-Mjlab-Velocity-Flat-SvanM2` | Flat-terrain velocity tracking, MLP actor-critic PPO. |
 
+## Benchmarking
+
+`benchmark/` holds **RobustLab**, a robustness benchmark for locomotion policies.
+It runs a policy over 11 terrain types (slopes, stairs, gaps, mud, ...) at fixed
+difficulty and friction levels in MuJoCo, and reports which it can and cannot
+cross, with videos. It is a separate package and currently ships a Unitree Go2 reference setup.
+
+```bash
+cd benchmark
+python -m pip install -U pip
+pip install -e '.[mujoco,onnx,analytics]'
+export MUJOCO_GL=egl
+robustlab preflight submissions/go2_blind/examiner.yaml
+```
+
+See [`benchmark/README.md`](benchmark/README.md) for running the full benchmark
+and benchmarking your own policy.
+
 ## Repository layout
 
 ```
@@ -111,6 +129,7 @@ xterra_mjlab/
 │   └── tasks/velocity/config/svanm2/  # env cfg, RL cfg, task registration
 ├── scripts/                           # train / play / list_envs
 ├── checkpoints/                       # published policies
+├── benchmark/                         # RobustLab robustness benchmark (own package)
 └── licenses/                          # third-party license inventory
 ```
 
@@ -134,6 +153,7 @@ module docstring for the full derivation.
 
 ## License
 
-Apache-2.0 (see `LICENSE` and `NOTICE`). Third-party components (mjlab, rsl_rl,
-MuJoCo/Warp) are installed separately; their licenses are collected under
-`licenses/`.
+Apache-2.0 (see `LICENSE` and `NOTICE`), except `benchmark/`, which is MIT
+(`benchmark/LICENSE`). Third-party components (mjlab, rsl_rl, MuJoCo/Warp) are
+installed separately. Their licenses, and those of the robot models and policy
+weights vendored under `benchmark/`, are collected under `licenses/`.
